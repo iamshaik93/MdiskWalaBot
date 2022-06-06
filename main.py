@@ -8,6 +8,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from TeamTeleRoid.forcesub import ForceSub
 import asyncio
 from telethon import TelegramClient, events
+from telethon.sessions import StringSession
 from telethon import Button
 from tmdbv3api import TMDb, Movie, TV
 
