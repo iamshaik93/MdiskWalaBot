@@ -35,7 +35,7 @@ tv = TV()
 
 @Bot.on_message(filters.private & filters.command("start"))
 async def start_handler(_, event: Message):
-	await event.reply_photo("https://telegra.ph/file/165941ae764a56d6d9c89.jpg",
+	await event.reply_photo("https://telegra.ph/file/3dc2573762d700b63137f.jpg",
                                 caption=Config.START_MSG.format(event.from_user.mention),
                                 reply_markup=InlineKeyboardMarkup([
                                     [InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies"),
