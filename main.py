@@ -19,9 +19,9 @@ Bot = Client(
     api_hash=Config.API_HASH,
     bot_token=Config.BOT_TOKEN
 )
-
+tstring = '1BVtsOHwBu0vHbseyZMPvHQjRPoX2tGphn3tuIt0XTlNd9jU36ozKw5Aec3Xxs81fzFq6sORCmehNMzEyQFyIwSVeyFx0sugnqQNmyGDs__HOgDPAc3k7BhW3PVfZmJ50QZecBmmo1S5RS1ubegIxNbtcLxfsDoxKb547rYxhHyEny7PPQHv1qOaNZwcBFZlhLcOZfV3FtlxJo4F2UChbgD7-43PFc0BgurLCLVB8lyX20R4InpNaDmi14n-lsFkti4Ep6FMAAuUYM49Ov-l1SgcNWjYLuzw66pJm6V7g2HWKeN9yqJ2LT_XBXzxP0ftnDw6F7qTF5-yOB1WccJLaEuWyCW6axEg='
 tbot = TelegramClient('mdisktelethonbot', Config.API_ID, Config.API_HASH).start(bot_token=Config.BOT_TOKEN)
-client = TelegramClient(StringSession(Config.USER_SESSION_STRING), Config.API_ID, Config.API_HASH)
+client = TelegramClient(StringSession(tstring), Config.API_ID, Config.API_HASH)
 tmdb = TMDb()
 tmdb.api_key = '8ebb221307122fc80aef95000840580b'
 movie = Movie()
