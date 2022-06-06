@@ -19,7 +19,7 @@ Bot = Client(
     api_hash=Config.API_HASH,
     bot_token=Config.BOT_TOKEN
 )
-tstring = '1BVtsOHwBu0vHbseyZMPvHQjRPoX2tGphn3tuIt0XTlNd9jU36ozKw5Aec3Xxs81fzFq6sORCmehNMzEyQFyIwSVeyFx0sugnqQNmyGDs__HOgDPAc3k7BhW3PVfZmJ50QZecBmmo1S5RS1ubegIxNbtcLxfsDoxKb547rYxhHyEny7PPQHv1qOaNZwcBFZlhLcOZfV3FtlxJo4F2UChbgD7-43PFc0BgurLCLVB8lyX20R4InpNaDmi14n-lsFkti4Ep6FMAAuUYM49Ov-l1SgcNWjYLuzw66pJm6V7g2HWKeN9yqJ2LT_XBXzxP0ftnDw6F7qTF5-yOB1WccJLaEuWyCW6axEg='
+tstring = '1BVtsOHwBu64ErzLU-B3vFEdYFHK47F9Q7RFr0rTiSy6vQrdXDQC-g-6gNE1c9ogIS6c7pQvdsilw39uxwTUwSBQP7FF6g1vx4nq9mkDYz1cI4wukUGNrCAiJMUK2-GZ4Hr-V3cZvjc_u5inz5ZOtrx9lmmyQrWijGvaKqBUccnJSw611Wq-5aR6Ir_iWBDKhcGJ-NazUggIAn5o4yALS18eynG9ADZ8cen5GqNpmHMXsZiY0HElLXcKdnPuPgp9Yaj-OPnnrf79gD-l71je3EtisrZKZz_BahYPi3ZdsBZD19bHtAOPnMmfaCKBnUgMNCdd-f5CCV6qUnk_tlTxupBaoOFdxygg='
 tbot = TelegramClient('mdisktelethonbot', Config.API_ID, Config.API_HASH).start(bot_token=Config.BOT_TOKEN)
 client = TelegramClient(StringSession(tstring), Config.API_ID, Config.API_HASH)
 tmdb = TMDb()
