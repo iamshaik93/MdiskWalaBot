@@ -66,7 +66,7 @@ async def test(event):
         break
     buttons = [Button.inline('➡️ Next', f'1next_{args}')]
     image = f'http://image.tmdb.org/t/p/w500/{movie.search(args)[0].poster_path}'
-    result = await bot.send_file(entity=event.chat_id, file=image, caption=answer, buttons=buttons, force_document=False)
+    result = await tbot.send_file(entity=event.chat_id, file=image, caption=answer, buttons=buttons, force_document=False)
     await asyncio.sleep(30)
     await result.delete()
     # await event.reply(file=image, caption=answer, buttons=buttons, force_document=False)
