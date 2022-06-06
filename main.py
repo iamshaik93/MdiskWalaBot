@@ -99,7 +99,7 @@ async def movie_next(event):
             f_text = f_text.split("|||", 1)[0]
         answer += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + \
                   f_text.split("\n", 2)[
-                      -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 60Sec...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+                      -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
                    Button.inline('➡️ Next', f'{index + 1}next_{args}')]
     except:
