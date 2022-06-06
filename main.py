@@ -57,7 +57,7 @@ async def help_handler(_, event: Message):
 async def test(event):
     args = event.text
     if '/start' in args or '/help' in args:
-	return
+        return
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     answer = None
     async for msg in search:
@@ -104,6 +104,7 @@ async def movie_next(event):
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
                    Button.inline('➡️ Next', f'{index + 1}next_{args}')]
     await event.edit(answer, buttons=buttons)
+
 
 # @Bot.on_message(filters.incoming)
 # async def inline_handlers(_, event: Message):
