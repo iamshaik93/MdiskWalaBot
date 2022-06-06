@@ -55,33 +55,49 @@ async def help_handler(_, event: Message):
     )
 
 @tbot.on(events.NewMessage(incoming=True))
-async def test(event):
+async def mainhandler(event):
     args = event.text
-    if '/start' in args or '/help' in args:
-        return
-    search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
-    answer = None
+    search = client.iter_messages(databaseid, limit=10, search=args)
+    answer = f'**📂 Results For ➠ {event.text} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
     async for msg in search:
-        answer = msg.text
+        f_text = msg.text
+        if "|||" in msg.text:
+            f_text = msg.text.split("|||", 1)[0]
+            msg_text = msg.text.html.split("|||", 1)[0]
+        answer += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 60Sec...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
         break
     buttons = [Button.inline('➡️ Next', f'1next_{args}')]
-    image = f'http://image.tmdb.org/t/p/w500/{movie.search(args)[0].poster_path}'
-    result = await tbot.send_file(entity=event.chat_id, file=image, caption=answer, buttons=buttons, force_document=False)
-    await asyncio.sleep(30)
+    try:
+        image = f'http://image.tmdb.org/t/p/w500/{movie.search(args)[0].poster_path}'
+    except:
+        image = None
+    if image is not None:
+        try:
+            result = await tbot.send_file(entity=event.chat_id, file=image, caption=answer, buttons=buttons, force_document=False)
+        except:
+            result = await event.reply(answer, buttons=buttons)
+    else:
+        result = await event.reply(answer, buttons=buttons)
+    await asyncio.sleep(60)
     await result.delete()
-    # await event.reply(file=image, caption=answer, buttons=buttons, force_document=False)
 
 @tbot.on(events.CallbackQuery(func=lambda event: b"next_" in event.data))
 async def movie_next(event):
     data = event.data.decode()
     index = int(data[:1])
     args = data[6:]
-    search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
+    search = client.iter_messages(databaseid, limit=10, search=args)
     finalsearch = []
+    answer = f'**📂 Results For ➠ {args} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
     async for msg in search:
         finalsearch.append(msg.text)
     try:
-        answer = finalsearch[index]
+        f_text = finalsearch[index]
+        if "|||" in f_text:
+            f_text = f_text.split("|||", 1)[0]
+        answer += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + \
+                  f_text.split("\n", 2)[
+                      -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 60Sec...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
                    Button.inline('➡️ Next', f'{index + 1}next_{args}')]
     except:
@@ -94,11 +110,17 @@ async def movie_next(event):
     data = event.data.decode()
     index = int(data[:1])
     args = data[6:]
-    search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
+    search = client.iter_messages(databaseid, limit=10, search=args)
     finalsearch = []
+    answer = f'**📂 Results For ➠ {args} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
     async for msg in search:
         finalsearch.append(msg.text)
-    answer = finalsearch[index]
+    f_text = finalsearch[index]
+    if "|||" in f_text:
+        f_text = f_text.split("|||", 1)[0]
+    answer += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + \
+              f_text.split("\n", 2)[
+                  -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 60Sec...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
     if index == 0:
         buttons = [Button.inline('➡️ Next', f'{index + 1}next_{args}')]
     else:
