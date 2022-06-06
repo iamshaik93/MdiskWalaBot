@@ -7,6 +7,9 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
     InputTextMessageContent
 from TeamTeleRoid.forcesub import ForceSub
 import asyncio
+from telethon import TelegramClient, events
+from telethon import Button
+from tmdbv3api import TMDb, Movie, TV
 
 # Bot Client for Inline Search
 Bot = Client(
@@ -16,12 +19,18 @@ Bot = Client(
     bot_token=Config.BOT_TOKEN
 )
 
-# User Client for Searching in Channel.
-User = Client(
-    session_name=Config.USER_SESSION_STRING,
-    api_id=Config.API_ID,
-    api_hash=Config.API_HASH
-)
+tbot = TelegramClient('mdisktelethonbot', Config.API_ID, Config.API_HASH).start(bot_token=Config.BOT_TOKEN)
+client = TelegramClient(StringSession(Config.USER_SESSION_STRING), Config.API_ID, Config.API_HASH)
+tmdb = TMDb()
+tmdb.api_key = '8ebb221307122fc80aef95000840580b'
+movie = Movie()
+tv = TV()
+# # User Client for Searching in Channel.
+# User = Client(
+#     session_name=Config.USER_SESSION_STRING,
+#     api_id=Config.API_ID,
+#     api_hash=Config.API_HASH
+# )
 
 @Bot.on_message(filters.private & filters.command("start"))
 async def start_handler(_, event: Message):
@@ -44,27 +53,79 @@ async def help_handler(_, event: Message):
         ])
     )
 
-@Bot.on_message(filters.incoming)
-async def inline_handlers(_, event: Message):
-    if event.text == '/start':
-        return
-    answers = f'**📂 Results For ➠ {event.text} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
-    async for message in User.search_messages(chat_id=Config.CHANNEL_ID, limit=50, query=event.text):
-        if message.text:
-            thumb = None
-            f_text = message.text
-            msg_text = message.text.html
-            if "|||" in message.text:
-                f_text = message.text.split("|||", 1)[0]
-                msg_text = message.text.html.split("|||", 1)[0]
-            answers += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 60Sec...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+@tbot.on(events.NewMessage(incoming=True))
+async def test(event):
+    args = event.text
+    if '/start' in args or '/help' in args:
+	return
+    search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
+    answer = None
+    async for msg in search:
+        answer = msg.text
+        break
+    buttons = [Button.inline('➡️ Next', f'1next_{args}')]
+    image = f'http://image.tmdb.org/t/p/w500/{movie.search(args)[0].poster_path}'
+    result = await bot.send_file(entity=event.chat_id, file=image, caption=answer, buttons=buttons, force_document=False)
+    await asyncio.sleep(30)
+    await result.delete()
+    # await event.reply(file=image, caption=answer, buttons=buttons, force_document=False)
+
+@tbot.on(events.CallbackQuery(func=lambda event: b"next_" in event.data))
+async def movie_next(event):
+    data = event.data.decode()
+    index = int(data[:1])
+    args = data[6:]
+    search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
+    finalsearch = []
+    async for msg in search:
+        finalsearch.append(msg.text)
     try:
-        msg = await event.reply_text(answers)
-        await asyncio.sleep(60)
-        await event.delete()
-        await msg.delete()
+        answer = finalsearch[index]
+        buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
+                   Button.inline('➡️ Next', f'{index + 1}next_{args}')]
     except:
-        print(f"[{Config.BOT_SESSION_NAME}] - Failed to Answer - {event.from_user.first_name}")
+        answer = '❌ NO MORE RESULTS ❌'
+        buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}')]
+    await event.edit(answer, buttons=buttons)
+
+@tbot.on(events.CallbackQuery(func=lambda event: b"back_" in event.data))
+async def movie_next(event):
+    data = event.data.decode()
+    index = int(data[:1])
+    args = data[6:]
+    search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
+    finalsearch = []
+    async for msg in search:
+        finalsearch.append(msg.text)
+    answer = finalsearch[index]
+    if index == 0:
+        buttons = [Button.inline('➡️ Next', f'{index + 1}next_{args}')]
+    else:
+        buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
+                   Button.inline('➡️ Next', f'{index + 1}next_{args}')]
+    await event.edit(answer, buttons=buttons)
+
+# @Bot.on_message(filters.incoming)
+# async def inline_handlers(_, event: Message):
+#     if event.text == '/start':
+#         return
+#     answers = f'**📂 Results For ➠ {event.text} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+#     async for message in User.search_messages(chat_id=Config.CHANNEL_ID, limit=50, query=event.text):
+#         if message.text:
+#             thumb = None
+#             f_text = message.text
+#             msg_text = message.text.html
+#             if "|||" in message.text:
+#                 f_text = message.text.split("|||", 1)[0]
+#                 msg_text = message.text.html.split("|||", 1)[0]
+#             answers += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 60Sec...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+#     try:
+#         msg = await event.reply_text(answers)
+#         await asyncio.sleep(60)
+#         await event.delete()
+#         await msg.delete()
+#     except:
+#         print(f"[{Config.BOT_SESSION_NAME}] - Failed to Answer - {event.from_user.first_name}")
 
 
 @Bot.on_callback_query()
@@ -127,10 +188,14 @@ async def button(bot, cmd: CallbackQuery):
 
 # Start Clients
 Bot.start()
-User.start()
+# User.start()
+with bot, client:
+    client.run_until_disconnected()
+    bot.run_until_disconnected()
+
 # Loop Clients till Disconnects
 idle()
 # After Disconnects,
 # Stop Clients
 Bot.stop()
-User.stop()
+# User.stop()
