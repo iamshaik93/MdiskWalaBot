@@ -66,7 +66,7 @@ async def test(event):
         if "|||" in msg.text:
             f_text = msg.text.split("|||", 1)[0]
             msg_text = msg.text.html.split("|||", 1)[0]
-        answer += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 60Sec...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+        answer += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
         break
     buttons = [Button.inline('➡️ Next', f'1next_{args}')]
     try:
@@ -122,7 +122,7 @@ async def movie_next(event):
         f_text = f_text.split("|||", 1)[0]
     answer += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + \
               f_text.split("\n", 2)[
-                  -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 60Sec...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+                  -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 60Sec...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
     if index == 0:
         buttons = [Button.inline('➡️ Next', f'{index + 1}next_{args}')]
     else:
@@ -145,7 +145,7 @@ async def movie_next(event):
 #             if "|||" in message.text:
 #                 f_text = message.text.split("|||", 1)[0]
 #                 msg_text = message.text.html.split("|||", 1)[0]
-#             answers += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 60Sec...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+#             answers += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
 #     try:
 #         msg = await event.reply_text(answers)
 #         await asyncio.sleep(60)
