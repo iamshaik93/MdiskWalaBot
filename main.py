@@ -60,13 +60,13 @@ async def test(event):
     if '/start' in args or '/help' in args:
         return
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
-    answer = f'**📂 Results For ➠ {event.text} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+    answer = f'**📂  {event.text} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
     async for msg in search:
         f_text = msg.text
         if "|||" in msg.text:
             f_text = msg.text.split("|||", 1)[0]
             msg_text = msg.text.html.split("|||", 1)[0]
-        answer += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+        answer += f'**🍿  ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n  ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
         break
     buttons = [Button.inline('➡️ Next', f'1next_{args}')]
     try:
@@ -91,14 +91,14 @@ async def movie_next(event):
     args = data[6:]
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     finalsearch = []
-    answer = f'**📂 Results For ➠ {args} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+    answer = f'**📂  {args} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
     async for msg in search:
         finalsearch.append(msg.text)
     try:
         f_text = finalsearch[index]
         if "|||" in f_text:
             f_text = f_text.split("|||", 1)[0]
-        answer += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + \
+        answer += f'**🍿  ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n  ' + '' + \
                   f_text.split("\n", 2)[
                       -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
@@ -115,13 +115,13 @@ async def movie_next(event):
     args = data[6:]
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     finalsearch = []
-    answer = f'**📂 Results For ➠ {args} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+    answer = f'**📂  {args} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
     async for msg in search:
         finalsearch.append(msg.text)
     f_text = finalsearch[index]
     if "|||" in f_text:
         f_text = f_text.split("|||", 1)[0]
-    answer += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + \
+    answer += f'**🍿  ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n  ' + '' + \
               f_text.split("\n", 2)[
                   -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
     if index == 0:
@@ -137,7 +137,7 @@ async def movie_next(event):
 # async def inline_handlers(_, event: Message):
 #     if event.text == '/start':
 #         return
-#     answers = f'**📂 Results For ➠ {event.text} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+#     answers = f'**📂  {event.text} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
 #     async for message in User.search_messages(chat_id=Config.CHANNEL_ID, limit=50, query=event.text):
 #         if message.text:
 #             thumb = None
@@ -146,7 +146,7 @@ async def movie_next(event):
 #             if "|||" in message.text:
 #                 f_text = message.text.split("|||", 1)[0]
 #                 msg_text = message.text.html.split("|||", 1)[0]
-#             answers += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+#             answers += f'**🍿  ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n  ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
 #     try:
 #         msg = await event.reply_text(answers)
 #         await asyncio.sleep(300)
