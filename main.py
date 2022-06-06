@@ -191,9 +191,9 @@ async def button(bot, cmd: CallbackQuery):
 # Start Clients
 Bot.start()
 # User.start()
-with bot, client:
+with tbot, client:
     client.run_until_disconnected()
-    bot.run_until_disconnected()
+    tbot.run_until_disconnected()
 
 # Loop Clients till Disconnects
 idle()
