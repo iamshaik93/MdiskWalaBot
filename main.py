@@ -71,27 +71,21 @@ async def test(event):
         c += 1
         break
     if c <= 0:
-        answer = f'''**Sorry, No More Results❗️**
+        answer = f'''**No Results Found❗**
 
-**Reason Is❓👇**
+**The Reason Is❓👇**
 
-**1 - Wrong Spelling 📌**
-**2 - Movie Not Released 📌**
-**3 - OTT, DVD Not Released 📌**
-**4 - Not Uploaded 📌**
-
-**👉 You Will Be Notified When Movie Is Available Please Be Patience.🙏🏻**
+**1 - Wrong Spelling❗**
+**2 - Movie Not Released❗**
+**3 - OTT, DVD Not Released❗**
+**4 - Not Uploaded❗**
 
 **Note❗️**
-**Please Type Movie Name With Correct Spelling.🙏**
-
-**👉 Search In Google For Correct Movie Name.🔍**
-
-**Request Your Movie❗️**
-**👉 @RoyalKrrishna**
+**Please Type Correct Spelling ✅**
+**Include Year For Better Results 📅**
 '''
         buttons = None
-        newbutton = [Button.url('Check Spelling 🔍', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie')], [Button.url('Check Release Date 📅 🔍', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
+        newbutton = [Button.url('Click To Check Spelling✅', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie')], [Button.url('Click To Check Release Date📅', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
     else:
         buttons = [Button.inline('➡️ Next', f'1next_{args}')]
         newbutton = None
