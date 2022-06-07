@@ -63,7 +63,6 @@ async def test(event):
     answer = f'**📂 {event.text} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
     c = 0
     async for msg in search:
-        if msg is None:
         f_text = msg.text
         if "|||" in msg.text:
             f_text = msg.text.split("|||", 1)[0]
