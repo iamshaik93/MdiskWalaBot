@@ -61,28 +61,66 @@ async def test(event):
         return
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     answer = f'**📂 {event.text} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+    c = 0
     async for msg in search:
+        if msg is None:
         f_text = msg.text
         if "|||" in msg.text:
             f_text = msg.text.split("|||", 1)[0]
             msg_text = msg.text.html.split("|||", 1)[0]
         answer += f'**🍿 ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+        c += 1
         break
-    buttons = [Button.inline('➡️ Next', f'1next_{args}')]
+    if c <= 0:
+        answer = f'''**Sorry, No More Results❗️**
+
+**Reason Is❓👇**
+
+**1 - Wrong Spelling 📌**
+**2 - Movie Not Released 📌**
+**3 - OTT, DVD Not Released 📌**
+**4 - Not Uploaded 📌**
+
+**👉 You Will Be Notified When Movie Is Available Please Be Patience.🙏🏻**
+
+**Note❗️**
+**Please Type Movie Name With Correct Spelling.🙏**
+
+**👉 Search In Google For Correct Movie Name.🔍**
+**[Check Spelling](http://www.google.com/search?q={event.text.replace("", "%20")}**
+
+**Request Your Movie❗️**
+**👉 @RoyalKrrishna**
+'''
+        buttons = None
+    else:
+        buttons = [Button.inline('➡️ Next', f'1next_{args}')]
+        pass
     try:
         image = f'http://image.tmdb.org/t/p/w500/{movie.search(args)[0].poster_path}'
     except:
         image = None
+    if buttons is None:
+        result = await event.reply(answer, link_preview=False)
+        await asyncio.sleep(300)
+        await event.delete()
+        return await result.delete()
     if image is not None:
         try:
             result = await tbot.send_file(entity=event.chat_id, file=image, caption=answer, buttons=buttons, force_document=False)
+            await asyncio.sleep(300)
+            await event.delete()
+            return await result.delete()
         except:
             result = await event.reply(answer, buttons=buttons)
+            await asyncio.sleep(300)
+            await event.delete()
+            return await result.delete()
     else:
         result = await event.reply(answer, buttons=buttons)
-    await asyncio.sleep(300)
-    await event.delete()
-    await result.delete()
+        await asyncio.sleep(300)
+        await event.delete()
+        return await result.delete()
 
 @tbot.on(events.CallbackQuery(func=lambda event: b"next_" in event.data))
 async def movie_next(event):
