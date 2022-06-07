@@ -86,21 +86,22 @@ async def test(event):
 **Please Type Movie Name With Correct Spelling.🙏**
 
 **👉 Search In Google For Correct Movie Name.🔍**
-**[Check Spelling](http://www.google.com/search?q={event.text.replace("", "%20")})**
 
 **Request Your Movie❗️**
 **👉 @RoyalKrrishna**
 '''
         buttons = None
+        newbutton = [Button.url('Check Spelling 🔍', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}')]
     else:
         buttons = [Button.inline('➡️ Next', f'1next_{args}')]
+        newbutton = None
         pass
     try:
         image = f'http://image.tmdb.org/t/p/w500/{movie.search(args)[0].poster_path}'
     except:
         image = None
     if buttons is None:
-        result = await event.reply(answer, link_preview=False)
+        result = await event.reply(answer, buttons=newbutton, link_preview=False)
         await asyncio.sleep(300)
         await event.delete()
         return await result.delete()
