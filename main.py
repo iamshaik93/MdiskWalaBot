@@ -120,7 +120,7 @@ async def movie_next(event):
     args = data[6:]
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     finalsearch = []
-    answer = f'**📂 {args} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+    answer = f'**📂 {args} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱**'
     async for msg in search:
         finalsearch.append(msg.text)
     try:
@@ -129,11 +129,11 @@ async def movie_next(event):
             f_text = f_text.split("|||", 1)[0]
         answer += f'**🍿 ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + \
                   f_text.split("\n", 2)[
-                      -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+                      -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰**'
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
                    Button.inline('➡️ Next', f'{index + 1}next_{args}')]
     except:
-        answer = '**Sorry, No More Results❗\n\nReason Is❓👇\n\n1 - Wrong Spelling 📌\n2 - Movie Not Released 📌\n3 - OTT, DVD Not Released 📌\n4 - Not Uploaded 📌\n\n👉 You Will Be Notified When Movie Is Available Please Be Patience.🙏🏻\n\nNote❗\nPlease Type Movie Name With Correct Spelling.🙏\n\n👉 Search In Google For Correct Movie Name.🔍\n\nRequest Your Movie❗\n👉 @RoyalKrrishna**'
+        answer = '**Sorry, No More Results❗\n\nReason Is❓👇\n\n1 - Wrong Spelling 📌\n2 - Movie Not Released 📌\n3 - OTT, DVD Not Released 📌\n4 - Not Uploaded 📌\n\n[Check Spelling On Google](http://www.google.com/search?q=event.text.replace(' ', '%20'))\n\nNote❗\nPlease Type Movie Name With Correct Spelling.🙏\n\n👉 Search In Google For Correct Movie Name.🔍\n\nRequest Your Movie❗\n👉 @RoyalKrrishna**'
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}')]
     await event.edit(answer, buttons=buttons)
 
