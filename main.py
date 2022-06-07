@@ -60,7 +60,7 @@ async def test(event):
     if '/start' in args or '/help' in args:
         return
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
-    answer = f'**📂 {event.text}**▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
+    answer = f'**📂 {event.text}**\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
     c = 0
     async for msg in search:
         f_text = msg.text
@@ -120,7 +120,7 @@ async def movie_next(event):
     args = data[6:]
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     finalsearch = []
-    answer = f'**📂 {args}**▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
+    answer = f'**📂 {args}**\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
     async for msg in search:
         finalsearch.append(msg.text)
     try:
@@ -144,7 +144,7 @@ async def movie_next(event):
     args = data[6:]
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     finalsearch = []
-    answer = f'**📂 {args}**▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
+    answer = f'**📂 {args}**\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
     async for msg in search:
         finalsearch.append(msg.text)
     f_text = finalsearch[index]
