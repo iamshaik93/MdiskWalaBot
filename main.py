@@ -60,7 +60,7 @@ async def test(event):
     if '/start' in args or '/help' in args:
         return
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
-    answer = f'**📂 {event.text}**\n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
+    answer = f'**📂 {event.text}**▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
     c = 0
     async for msg in search:
         f_text = msg.text
@@ -120,7 +120,7 @@ async def movie_next(event):
     args = data[6:]
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     finalsearch = []
-    answer = f'**📂 {args}**\n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
+    answer = f'**📂 {args}**▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
     async for msg in search:
         finalsearch.append(msg.text)
     try:
@@ -133,7 +133,7 @@ async def movie_next(event):
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
                    Button.inline('➡️ Next', f'{index + 1}next_{args}')]
     except:
-        answer = '**Sorry, No More Results❗\n\nReason Is❓👇\n\n1 - Wrong Spelling 📌\n2 - Movie Not Released 📌\n3 - OTT, DVD Not Released 📌\n4 - Not Uploaded 📌\n\nPlease Type Correct Spelling ✅\nSearch In Google For Correct Name.🔍\n\nRequest Your Movie❗\n👉 @RoyalKrrishna**'
+        answer = '**No More Results❗\n\nReason Is❓👇\n\n1 - Wrong Spelling 📌\n2 - Movie Not Released 📌\n3 - OTT, DVD Not Released 📌\n4 - Not Uploaded 📌\n\nPlease Type Correct Spelling ✅\nSearch In Google For Correct Name.🔍\n\nRequest Your Movie❗\n👉 @RoyalKrrishna**'
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}')]
     await event.edit(answer, buttons=buttons)
 
@@ -144,7 +144,7 @@ async def movie_next(event):
     args = data[6:]
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     finalsearch = []
-    answer = f'**📂 {args}**\n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
+    answer = f'**📂 {args}**▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
     async for msg in search:
         finalsearch.append(msg.text)
     f_text = finalsearch[index]
@@ -166,7 +166,7 @@ async def movie_next(event):
 # async def inline_handlers(_, event: Message):
 #     if event.text == '/start':
 #         return
-#     answers = f'**📂 {event.text}**\n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
+#     answers = f'**📂 {event.text}**▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
 #     async for message in User.search_messages(chat_id=Config.CHANNEL_ID, limit=50, query=event.text):
 #         if message.text:
 #             thumb = None
