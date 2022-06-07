@@ -86,7 +86,7 @@ async def test(event):
 **Please Type Movie Name With Correct Spelling.🙏**
 
 **👉 Search In Google For Correct Movie Name.🔍**
-**[Check Spelling](http://www.google.com/search?q={event.text.replace("", "%20")}**
+**[Check Spelling](http://www.google.com/search?q={event.text.replace("", "%20")})**
 
 **Request Your Movie❗️**
 **👉 @RoyalKrrishna**
