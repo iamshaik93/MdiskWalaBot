@@ -104,7 +104,7 @@ async def movie_next(event):
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
                    Button.inline('➡️ Next', f'{index + 1}next_{args}')]
     except:
-        answer = '❌ NO MORE RESULTS ❌'
+        answer = '**Sorry, No More Results❗\n\nReason Is❓👇\n\n1 - Wrong Spelling 📌\n2 - Movie Not Released 📌\n3 - OTT, DVD Not Released 📌\n4 - Not Uploaded 📌\n\n👉 You Will Be Notified When Movie Is Available Please Be Patience.🙏🏻\n\nNote❗\nPlease Type Movie Name With Correct Spelling.🙏\n\n👉 Search In Google For Correct Movie Name.🔍\n\nRequest Your Movie❗\n👉 @RoyalKrrishna**'
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}')]
     await event.edit(answer, buttons=buttons)
 
