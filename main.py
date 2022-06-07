@@ -91,8 +91,7 @@ async def test(event):
 **👉 @RoyalKrrishna**
 '''
         buttons = None
-        newbutton = [Button.url('Check Spelling 🔍', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie'),
-                     Button.url('Check Release Date 📅 🔍', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
+        newbutton = [Button.url('Check Spelling 🔍', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie')], [Button.url('Check Release Date 📅 🔍', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
     else:
         buttons = [Button.inline('➡️ Next', f'1next_{args}')]
         newbutton = None
