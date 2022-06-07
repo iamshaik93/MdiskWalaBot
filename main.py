@@ -60,23 +60,23 @@ async def test(event):
     if '/start' in args or '/help' in args:
         return
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
-    answer = f'**📂 {event.text} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+    answer = f'**📂 {event.text} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱**'
     c = 0
     async for msg in search:
         f_text = msg.text
         if "|||" in msg.text:
             f_text = msg.text.split("|||", 1)[0]
             msg_text = msg.text.html.split("|||", 1)[0]
-        answer += f'**🍿 ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+        answer += f'**🍿 ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰**'
         c += 1
         break
     if c <= 0:
         answer = f'''**No Results Found❗**
 
-**1 - Wrong Spelling❓**
-**2 - Movie Not Released❓**
-**3 - OTT, DVD Not Released❓**
-**4 - Not Uploaded❓**
+**1 - Wrong Spelling❗**
+**2 - Movie Not Released❗**
+**3 - OTT, DVD Not Released❗**
+**4 - Not Uploaded❗**
 
 **Type Correct Spelling ✅**
 **Add Year For Better Results 📅**
