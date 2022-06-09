@@ -73,11 +73,7 @@ async def test(event):
     if c <= 0:
         answer = f'''**No Results Found❗**
 
-**1 - Wrong Spelling❗**
-**2 - Movie Not Released❗**
-**3 - OTT, DVD Not Released❗**
-**4 - Not Uploaded❗**
-
+**Type Only Movie Name 💬**
 **Type Correct Spelling ✅**
 **Add Year For Better Results 📅**
 '''
