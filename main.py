@@ -73,8 +73,8 @@ async def test(event):
     if c <= 0:
         answer = f'''**No Results Found❗**
 
-**Type Only Movie Name 💬**
 **Type Correct Spelling ✅**
+**Type Only Movie Name ⌨️**
 **Add Year For Better Results 📅**
 '''
         buttons = None
