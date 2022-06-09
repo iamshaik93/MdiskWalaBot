@@ -72,7 +72,8 @@ async def test(event):
         break
     if c <= 0:
         answer = f'''**No Results Found❗️**
-**Type Only Movie Name ✍️**
+
+**Type Only Movie Name 💬**
 **Check Spelling On** [Gₒₒgₗₑ](http://www.google.com/search?q={event.text.replace(' ', '%20')}%20Movie) 🔍
 '''
         buttons = None
