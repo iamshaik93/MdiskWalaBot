@@ -38,13 +38,7 @@ async def start_handler(event):
     if not event.is_private:
         return
     mid = event.message.id
-    await tbot.send_file(entity=event.chat_id, file="https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
-                        caption=Config.START_MSG.format(event.sender.first_name),
-                        buttons=[
-                            [Button.url("Our Channel", url="https://t.me/iP_Movies"),
-                             Button.url("Our Group", url="https://t.me/iPopcornMovieGroup")],
-                            [Button.inline("Help", "Help_msg"),
-                             Button.inline("About", "About_msg")]], reply_to=event.message.id)
+    await event.reply('`Please wait...`')
     await tbot.delete_messages(event.chat_id, [mid + 1, mid + 2])
     await tbot.send_file(entity=event.chat_id, file="https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
                       caption=Config.START_MSG.format(event.sender.first_name),
@@ -52,7 +46,7 @@ async def start_handler(event):
                           [Button.url("Our Channel", url="https://t.me/iP_Movies"),
                            Button.url("Our Group", url="https://t.me/iPopcornMovieGroup")],
                           [Button.inline("Help", "Help_msg"),
-                           Button.inline("About", "About_msg")]], reply_to=event.message.id)
+                           Button.inline("About", "About_msg")]])
 
 # @tbot.on_message(filters.private & filters.command("start"))
 # async def start_handler(_, event: Message):
