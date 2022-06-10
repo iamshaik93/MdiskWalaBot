@@ -36,7 +36,7 @@ If You Want Your Own Bot Like This Then You Can Contact Our Developer.</b>
 
 I'm Mdisk Search Robot.🤖</a>
 
-I Can Search 🔍 What You Want❗
+I Can Search Any Movie You Want❗
 
 Made With ❤ By @RoyalKrrishna</b>
 """
