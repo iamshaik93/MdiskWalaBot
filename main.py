@@ -35,7 +35,7 @@ tv = TV()
 
 @Bot.on_message(filters.private & filters.command("start"))
 async def start_handler(_, event: Message):
-	mid = event.message.id
+	mid = event.id
 	await event.reply_photo("https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
                                 caption=Config.START_MSG.format(event.from_user.mention),
                                 reply_markup=InlineKeyboardMarkup([
