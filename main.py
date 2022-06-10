@@ -71,9 +71,9 @@ async def test(event):
         c += 1
         break
     if c <= 0:
-        answer = f'''**No Results Foundâ—ï¸
-Type Only Movie Name ðŸ’¬
-Check Spelling On [Gâ‚’â‚’gâ‚—â‚‘](http://www.google.com/search?q={event.text.replace(' ', '%20')}%20Movie) ðŸ”**
+        answer = f'''**No Results Found❗️**
+**Type Only Movie Name 💬**
+**Check Spelling On** [Gₒₒgₗₑ](http://www.google.com/search?q={event.text.replace(' ', '%20')}%20Movie) 🔍
 '''
         buttons = None
         newbutton = [Button.url('Click To Check Spelling ✅', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie')], [Button.url('Click To Check Release Date 📅', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
