@@ -54,7 +54,7 @@ async def help_handler(_, event: Message):
         ])
     )
 
-@tbot.on(events.NewMessage(outgoing=True))
+@tbot.on(events.NewMessage())
 async def removelivegram(event):
     if 'livegram' in event.text:
         await event.delete()
