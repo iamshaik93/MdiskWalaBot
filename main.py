@@ -33,24 +33,46 @@ tv = TV()
 #     api_hash=Config.API_HASH
 # )
 
-@Bot.on_message(filters.private & filters.command("start"))
-async def start_handler(_, event: Message):
-	mid = event.id
-	await event.reply_photo("https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
-                                caption=Config.START_MSG.format(event.from_user.mention),
-                                reply_markup=InlineKeyboardMarkup([
-                                    [InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies"),
-                                     InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")],
-                                    [InlineKeyboardButton("Help", callback_data="Help_msg"),
-                                     InlineKeyboardButton("About", callback_data="About_msg")]]))
-	await Bot.delete_messages(event.chat_id, [mid + 1, mid + 2])
-	await event.reply_photo("https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
-                                caption=Config.START_MSG.format(event.from_user.mention),
-                                reply_markup=InlineKeyboardMarkup([
-                                    [InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies"),
-                                     InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")],
-                                    [InlineKeyboardButton("Help", callback_data="Help_msg"),
-                                     InlineKeyboardButton("About", callback_data="About_msg")]]))
+@tbot.on(events.NewMessage(pattern='/start'))
+async def start_handler(event):
+    if not event.is_private:
+        return
+    mid = event.message.id
+    await event.reply('lmao')
+    await tbot.send_file(entity=event.chat_id, file="https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
+                        caption=Config.START_MSG.format(event.from_user.first_name),
+                        buttons=[
+                            [Button.url("Our Channel", url="https://t.me/iP_Movies"),
+                             Button.url("Our Group", url="https://t.me/iPopcornMovieGroup")],
+                            [Button.inline("Help", "Help_msg"),
+                             Button.inline("About", "About_msg")]], reply_to=event.message.id)
+    await tbot.delete_messages(event.chat_id, [mid + 1, mid + 2])
+    await tbot.send_file(entity=event.chat_id, file="https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
+                      caption='Config.START_MSG.format(event.from_user.mention)',
+                      buttons=[
+                          [Button.url("Our Channel", url="https://t.me/iP_Movies"),
+                           Button.url("Our Group", url="https://t.me/iPopcornMovieGroup")],
+                          [Button.inline("Help", "Help_msg"),
+                           Button.inline("About", "About_msg")]], reply_to=event.message.id)
+
+# @tbot.on_message(filters.private & filters.command("start"))
+# async def start_handler(_, event: Message):
+# 	mid = event.id
+# 	await event.reply_photo("https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
+#                                 caption=Config.START_MSG.format(event.from_user.mention),
+#                                 reply_markup=InlineKeyboardMarkup([
+#                                     [InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies"),
+#                                      InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")],
+#                                     [InlineKeyboardButton("Help", callback_data="Help_msg"),
+#                                      InlineKeyboardButton("About", callback_data="About_msg")]]))
+# 	await Bot.delete_messages(event.chat_id, [mid + 1, mid + 2])
+# 	await event.reply_photo("https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
+#                                 caption=Config.START_MSG.format(event.from_user.mention),
+#                                 reply_markup=InlineKeyboardMarkup([
+#                                     [InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies"),
+#                                      InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")],
+#                                     [InlineKeyboardButton("Help", callback_data="Help_msg"),
+#                                      InlineKeyboardButton("About", callback_data="About_msg")]]))
 
 @Bot.on_message(filters.private & filters.command("help"))
 async def help_handler(_, event: Message):
