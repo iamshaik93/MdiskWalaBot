@@ -43,13 +43,13 @@ Made With ❤ By @RoyalKrrishna</b>
 
 
     START_MSG = """
-**Hey! {}😅,
+<b>Hey! {}😅,
 
 I'm Mdisk Search Robot.🤖
 
 I Can Search 🔍 What You Want❗
 
-Made With ❤ By @RoyalKrrishna**
+Made With ❤ By @RoyalKrrishna</b>
 """
 
 
