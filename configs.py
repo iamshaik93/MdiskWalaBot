@@ -13,7 +13,7 @@ class Config(object):
     BOT_USERNAME = os.environ.get("BOT_USERNAME")
     BOT_OWNER = int(os.environ.get("BOT_OWNER"))
     UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", None)
-    ABOUT_BOT_TEXT = """**This is Mdisk Search Bot.
+    ABOUT_BOT_TEXT = """<b>This is Mdisk Search Bot.
 
 🤖 My Name: <a href='https://t.me/RoyalKrrishna'>Mdisk Search Robot</a>
 
@@ -23,7 +23,7 @@ class Config(object):
 
 📡 Server: <a href='https://heroku.com'>Heroku</a>
 
-👨‍💻 Created By: <a href='https://t.me/RoyalKrrishna'>@RoyalKrrishna</a>**
+👨‍💻 Created By: <a href='https://t.me/RoyalKrrishna'>@RoyalKrrishna</a></b>
 """
 
     ABOUT_HELP_TEXT = """<b>👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>@RoyalKrrishna</a>
