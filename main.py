@@ -35,6 +35,15 @@ tv = TV()
 
 @Bot.on_message(filters.private & filters.command("start"))
 async def start_handler(_, event: Message):
+	mid = event.message.id
+	await event.reply_photo("https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
+                                caption=Config.START_MSG.format(event.from_user.mention),
+                                reply_markup=InlineKeyboardMarkup([
+                                    [InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies"),
+                                     InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")],
+                                    [InlineKeyboardButton("Help", callback_data="Help_msg"),
+                                     InlineKeyboardButton("About", callback_data="About_msg")]]))
+	await Bot.delete_messages(event.chat_id, [mid + 1, mid + 2])
 	await event.reply_photo("https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
                                 caption=Config.START_MSG.format(event.from_user.mention),
                                 reply_markup=InlineKeyboardMarkup([
