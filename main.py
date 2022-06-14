@@ -79,6 +79,7 @@ async def test(event):
 
 Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates Channel', 'https://t.me/FYM_Update'))
     args = event.text
+    else:
         return
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     answer = f'**📂 {event.text}**\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
