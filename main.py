@@ -51,7 +51,7 @@ async def start_handler(event):
     else:
         return await event.reply('''Hey! you need join My Updates Channel in order to use me 😍
 
-    Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates Channel', 'https://t.me/FYM_Update'))
+Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates Channel', 'https://t.me/FYM_Update'))
     if not event.is_private:
         return
     mid = event.message.id
