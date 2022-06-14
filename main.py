@@ -11,6 +11,8 @@ from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 from telethon import Button
 from tmdbv3api import TMDb, Movie, TV
+from telethon.errors import UserNotParticipantError
+from telethon.tl.functions.channels import GetParticipantRequest
 
 # Bot Client for Inline Search
 Bot = Client(
@@ -26,6 +28,15 @@ tmdb = TMDb()
 tmdb.api_key = '8ebb221307122fc80aef95000840580b'
 movie = Movie()
 tv = TV()
+
+async def get_user_join(id):
+    ok = True
+    try:
+        await tbot(GetParticipantRequest(channel=Config.UPDATES_CHANNEL, participant=id))
+        ok = True
+    except UserNotParticipantError:
+        ok = False
+    return ok
 # # User Client for Searching in Channel.
 # User = Client(
 #     session_name=Config.USER_SESSION_STRING,
@@ -85,6 +96,12 @@ async def removelivegram(event):
 
 @tbot.on(events.NewMessage(incoming=True))
 async def test(event):
+    if await get_user_join(event.sender_id):
+        pass
+    else:
+        return await event.reply('''Hey! you need join My Updates Channel in order to use me 😍
+
+Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates Channel', 'https://t.me/FYM_Update'))
     args = event.text
     if '/start' in args or '/help' in args:
         return
@@ -96,17 +113,21 @@ async def test(event):
         if "|||" in msg.text:
             f_text = msg.text.split("|||", 1)[0]
             msg_text = msg.text.html.split("|||", 1)[0]
-        answer += f'**🍿 ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[-1] + ' **\n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n**Auto Delete In 5Min...⏰**'
+        answer += f'**🍿 ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[
+            -1] + ' **\n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n**Auto Delete In 5Min...⏰**'
         c += 1
         break
     if c <= 0:
         answer = f'''**No Results Found For `{event.text}`❗️**
 
-**Type Only Movie Name 💬**
-**Check Spelling On** [𝗚𝗼𝗼𝗴𝗹𝗲](http://www.google.com/search?q={event.text.replace(' ', '%20')}%20Movie) 🔍
-'''
+    **Type Only Movie Name 💬**
+    **Check Spelling On** [𝗚𝗼𝗼𝗴𝗹𝗲](http://www.google.com/search?q={event.text.replace(' ', '%20')}%20Movie) 🔍
+    '''
         buttons = None
-        newbutton = [Button.url('Click To Check Spelling ✅', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie')], [Button.url('Click To Check Release Date 📅', f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
+        newbutton = [Button.url('Click To Check Spelling ✅',
+                                f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie')], [
+                        Button.url('Click To Check Release Date 📅',
+                                   f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
     else:
         buttons = [Button.inline('➡️ Next', f'1next_{args}')]
         newbutton = None
@@ -122,7 +143,8 @@ async def test(event):
         return await result.delete()
     if image is not None:
         try:
-            result = await tbot.send_file(entity=event.chat_id, file=image, caption=answer, buttons=buttons, force_document=False)
+            result = await tbot.send_file(entity=event.chat_id, file=image, caption=answer, buttons=buttons,
+                                          force_document=False)
             await asyncio.sleep(300)
             await event.delete()
             return await result.delete()
@@ -136,6 +158,7 @@ async def test(event):
         await asyncio.sleep(300)
         await event.delete()
         return await result.delete()
+
 
 @tbot.on(events.CallbackQuery(func=lambda event: b"next_" in event.data))
 async def movie_next(event):
