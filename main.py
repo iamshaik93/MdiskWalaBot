@@ -46,18 +46,26 @@ async def get_user_join(id):
 
 @tbot.on(events.NewMessage(pattern='/start'))
 async def start_handler(event):
+    if await get_user_join(event.sender_id):
+        pass
+    else:
+        return await event.reply('''Hey! you need join My Updates Channel in order to use me 😍
+
+    Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates Channel', 'https://t.me/FYM_Update'))
     if not event.is_private:
         return
     mid = event.message.id
     await event.reply('`Please wait...`')
     await tbot.delete_messages(event.chat_id, [mid + 1, mid + 2])
     await tbot.send_file(entity=event.chat_id, file="https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
-                      caption=Config.START_MSG.format(event.sender.first_name),
-                      buttons=[
-                          [Button.url("Our Channel", url="https://t.me/iP_Movies"),
-                           Button.url("Our Group", url="https://t.me/iPopcornMovieGroup")],
-                          [Button.inline("Help", "Help_msg"),
-                           Button.inline("About", "About_msg")]])
+                         caption=Config.START_MSG.format(event.sender.first_name),
+                         buttons=[
+                             [Button.url("Our Channel", url="https://t.me/iP_Movies"),
+                              Button.url("Our Group", url="https://t.me/iPopcornMovieGroup")],
+                             [Button.inline("Help", "Help_msg"),
+                              Button.inline("About", "About_msg")]])
+
+
 
 # @tbot.on_message(filters.private & filters.command("start"))
 # async def start_handler(_, event: Message):
@@ -80,11 +88,16 @@ async def start_handler(event):
 
 @Bot.on_message(filters.private & filters.command("help"))
 async def help_handler(_, event: Message):
+    if await get_user_join(event.sender_id):
+        pass
+    else:
+        return await event.reply('''Hey! you need join My Updates Channel in order to use me 😍
 
+    Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates Channel', 'https://t.me/FYM_Update'))
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies"),
-             InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup"), 
+             InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup"),
              InlineKeyboardButton("About", callback_data="About_msg")]
         ])
     )
