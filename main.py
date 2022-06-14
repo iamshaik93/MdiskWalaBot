@@ -32,7 +32,7 @@ tv = TV()
 async def get_user_join(id):
     ok = True
     try:
-        await tbot(GetParticipantRequest(channel=Config.UPDATES_CHANNEL, participant=id))
+        await tbot(GetParticipantRequest(channel=int(Config.UPDATES_CHANNEL), participant=id))
         ok = True
     except UserNotParticipantError:
         ok = False
