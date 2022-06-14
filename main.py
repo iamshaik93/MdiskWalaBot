@@ -109,12 +109,6 @@ async def removelivegram(event):
 
 @tbot.on(events.NewMessage(incoming=True))
 async def test(event):
-    if await get_user_join(event.sender_id):
-        pass
-    else:
-        return await event.reply('''Hey! you need join My Updates Channel in order to use me 😍
-
-Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates Channel', 'https://t.me/FYM_Update'))
     args = event.text
     if '/start' in args or '/help' in args:
         return
