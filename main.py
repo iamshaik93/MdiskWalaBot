@@ -51,7 +51,7 @@ async def start_handler(event):
     else:
         return await event.reply('''Hey! you need join My Updates Channel in order to use me 😍
 
-Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates Channel', 'https://t.me/FYM_Update'))
+    Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates Channel', 'https://t.me/FYM_Update'))
     if not event.is_private:
         return
     mid = event.message.id
@@ -88,11 +88,16 @@ Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates
 
 @Bot.on_message(filters.private & filters.command("help"))
 async def help_handler(_, event: Message):
+    if await get_user_join(event.sender_id):
+        pass
+    else:
+        return await event.reply('''Hey! you need join My Updates Channel in order to use me 😍
 
+    Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates Channel', 'https://t.me/FYM_Update'))
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies"),
-             InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup"), 
+             InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup"),
              InlineKeyboardButton("About", callback_data="About_msg")]
         ])
     )
@@ -108,9 +113,10 @@ async def test(event):
         pass
     else:
         return await event.reply('''Hey! you need join My Updates Channel in order to use me 😍
+
 Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates Channel', 'https://t.me/FYM_Update'))
     args = event.text
-    if '/help' in args:
+    if '/start' in args or '/help' in args:
         return
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     answer = f'**📂 {event.text}**\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
