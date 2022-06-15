@@ -111,7 +111,7 @@ async def test(event):
     else:
         return await event.reply('''**Hey! {} 😃**
 **Join Our Update Channel To Use Me**
-**Click Bellow Button To Join Now**''', buttons=Button.url('🔉 Updates Channel', 'https://t.me/FYM_Update'))
+**Click Bellow Button To Join Now**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     answer = f'**📂 {event.text}**\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
     c = 0
