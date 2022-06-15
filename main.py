@@ -25,7 +25,7 @@ tstring = '1BVtsOHwBuysUpeWaPHwL1Hw2oNIlaw_zxD8A5552ho5GHDtaqJX9mUKbjfVwzYYeXHh_
 tbot = TelegramClient('mdisktelethonbot', Config.API_ID, Config.API_HASH).start(bot_token=Config.BOT_TOKEN)
 client = TelegramClient(StringSession(tstring), Config.API_ID, Config.API_HASH)
 tmdb = TMDb()
-tmdb.api_key = '8ebb221307122fc80aef95000840580b'
+#tmdb.api_key = '8ebb221307122fc80aef95000840580b'
 movie = Movie()
 tv = TV()
 
