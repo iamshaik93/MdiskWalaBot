@@ -32,12 +32,12 @@ If You Want Your Own Bot Like This Then You Can Contact Our Developer.</b>
 """
 
     HOME_TEXT = """
-If You Like Me!😘
+**If You Like Me!😘
 
 Please Share Me With Your 
 Friends And Family.👨‍👨‍👧
 
-Made With ❤ By @RoyalKrrishna
+Made With ❤ By @RoyalKrrishna**
 """
 
 
