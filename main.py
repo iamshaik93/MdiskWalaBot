@@ -127,8 +127,8 @@ Press the Following Button to join Now 👇''', buttons=Button.url('🔉 Updates
     if c <= 0:
         answer = f'''**No Results Found For `{event.text}`❗️**
 
-    **Type Only Movie Name 💬**
-    **Check Spelling On** [𝗚𝗼𝗼𝗴𝗹𝗲](http://www.google.com/search?q={event.text.replace(' ', '%20')}%20Movie) 🔍
+**Type Only Movie Name 💬**
+**Check Spelling On** [𝗚𝗼𝗼𝗴𝗹𝗲](http://www.google.com/search?q={event.text.replace(' ', '%20')}%20Movie) 🔍
     '''
         buttons = None
         newbutton = [Button.url('Click To Check Spelling ✅',
