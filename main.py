@@ -13,6 +13,7 @@ from telethon import Button
 from tmdbv3api import TMDb, Movie, TV
 from telethon.errors import UserNotParticipantError
 from telethon.tl.functions.channels import GetParticipantRequest
+import mention
 
 # Bot Client for Inline Search
 Bot = Client(
