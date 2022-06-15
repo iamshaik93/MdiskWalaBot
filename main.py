@@ -113,11 +113,13 @@ async def test(event):
     if await get_user_join(event.sender_id):
         pass
     else:
-        return await event.reply(f'''**Hey! {event.sender.first_name} 😃**
+        haha = await event.reply(f'''**Hey! {event.sender.first_name} 😃**
 
 **You Have To Join Our Update Channel To Use Me.**
 
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
+	await asyncio.sleep(300)
+	return await haha.delete()
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     answer = f'**📂 {event.text}**\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
     c = 0
