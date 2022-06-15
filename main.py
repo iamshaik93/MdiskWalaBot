@@ -90,8 +90,8 @@ async def help_handler(_, event: Message):
 **You Have To Join Our Update Channel To Use Me.**
 
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
-	await asyncio.sleep(300)
-	return await haha.delete()
+        await asyncio.sleep(300)
+        return await haha.delete()
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix"),
@@ -118,8 +118,8 @@ async def test(event):
 **You Have To Join Our Update Channel To Use Me.**
 
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
-	await asyncio.sleep(300)
-	return await haha.delete()
+        await asyncio.sleep(300)
+        return await haha.delete()
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     answer = f'**📂 {event.text}**\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
     c = 0
@@ -252,58 +252,58 @@ async def button(bot, cmd: CallbackQuery):
         cb_data = cmd.data
         if "About_msg" in cb_data:
             await cmd.message.edit(
-			text=Config.ABOUT_BOT_TEXT,
-			disable_web_page_preview=True,
-			reply_markup=InlineKeyboardMarkup(
-				[
-					[
-						InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix"),
-						InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")
-					],
-					[
-						InlineKeyboardButton("Developer", url="https://t.me/RoyalKrrishna"),
-						InlineKeyboardButton("Home", callback_data="gohome")
-					]
-				]
-			),
-			parse_mode="html"
-		)
+            text=Config.ABOUT_BOT_TEXT,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix"),
+                        InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")
+                    ],
+                    [
+                        InlineKeyboardButton("Developer", url="https://t.me/RoyalKrrishna"),
+                        InlineKeyboardButton("Home", callback_data="gohome")
+                    ]
+                ]
+            ),
+            parse_mode="html"
+        )
         elif "Help_msg" in cb_data:
             await cmd.message.edit(
-			text=Config.ABOUT_HELP_TEXT,
-			disable_web_page_preview=True,
-			reply_markup=InlineKeyboardMarkup(
-				[
-					[
-						InlineKeyboardButton("About", callback_data="About_msg"),
-						InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix")
-					], 
+            text=Config.ABOUT_HELP_TEXT,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton("About", callback_data="About_msg"),
+                        InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix")
+                    ], 
                                         [
-						InlineKeyboardButton("Owner", url="https://t.me/RoyalKrrishna"),
-						InlineKeyboardButton("Home", callback_data="gohome")
-					]
-				]
-			),
-			parse_mode="html"
-		)
+                        InlineKeyboardButton("Owner", url="https://t.me/RoyalKrrishna"),
+                        InlineKeyboardButton("Home", callback_data="gohome")
+                    ]
+                ]
+            ),
+            parse_mode="html"
+        )
         elif "gohome" in cb_data:
             await cmd.message.edit(
-			text=Config.HOME_TEXT.format(cmd.from_user.mention),
-			disable_web_page_preview=True,
-			reply_markup=InlineKeyboardMarkup(
-				[
+            text=Config.HOME_TEXT.format(cmd.from_user.mention),
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
                                         [
-						InlineKeyboardButton("Help", callback_data="Help_msg"),
-						InlineKeyboardButton("About", callback_data="About_msg")
-					],
-					[
-						InlineKeyboardButton("Support", url="https://t.me/RoyalKrrishna"),
-						InlineKeyboardButton("Channel", url="https://t.me/iPopcornFlix")
-					]
-				]
-			),
-			parse_mode="html"
-		)
+                        InlineKeyboardButton("Help", callback_data="Help_msg"),
+                        InlineKeyboardButton("About", callback_data="About_msg")
+                    ],
+                    [
+                        InlineKeyboardButton("Support", url="https://t.me/RoyalKrrishna"),
+                        InlineKeyboardButton("Channel", url="https://t.me/iPopcornFlix")
+                    ]
+                ]
+            ),
+            parse_mode="html"
+        )
 
 # Start Clients
 Bot.start()
