@@ -85,8 +85,8 @@ async def help_handler(_, event: Message):
     if await get_user_join(event.sender_id):
         pass
     else:
-        return await event.reply(f'''**Hey! {event.id} 😃**
-**You Have To Join Our Update Channel To Use Me**
+        return await event.reply(f'''**Hey! {event.user_name} 😃**
+**You Have To Join Our Update Channel To Use Me.**
 
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
@@ -110,8 +110,8 @@ async def test(event):
     if await get_user_join(event.sender_id):
         pass
     else:
-        return await event.reply(f'''**Hey! {event.id} 😃**
-**You Have To Join Our Update Channel To Use Me**
+        return await event.reply(f'''**Hey! {event.user_name} 😃**
+**You Have To Join Our Update Channel To Use Me.**
 
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
