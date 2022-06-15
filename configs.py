@@ -32,13 +32,13 @@ If You Want Your Own Bot Like This Then You Can Contact Our Developer.</b>
 """
 
     HOME_TEXT = """
-<b>Hey! {}😅,
+**Hey! {}😅,
 
-I'm Mdisk Search Robot.🤖</a>
+I'm Mdisk Search Robot.🤖
 
 I Can Search Any Movie You Want❗
 
-Made With ❤ By @RoyalKrrishna</b>
+Made With ❤ By @RoyalKrrishna**
 """
 
 
