@@ -54,7 +54,7 @@ async def start_handler(event):
     await tbot.send_file(entity=event.chat_id, file="https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
                          caption=Config.START_MSG.format(event.sender.first_name),
                          buttons=[
-                             [Button.url("Our Channel", url="https://t.me/iP_Movies"),
+                             [Button.url("Our Channel", url="https://t.me/iPopcornFlix"),
                               Button.url("Our Group", url="https://t.me/iPopcornMovieGroup")],
                              [Button.inline("Help", "Help_msg"),
                               Button.inline("About", "About_msg")]])
@@ -67,7 +67,7 @@ async def start_handler(event):
 # 	await event.reply_photo("https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
 #                                 caption=Config.START_MSG.format(event.from_user.mention),
 #                                 reply_markup=InlineKeyboardMarkup([
-#                                     [InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies"),
+#                                     [InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix"),
 #                                      InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")],
 #                                     [InlineKeyboardButton("Help", callback_data="Help_msg"),
 #                                      InlineKeyboardButton("About", callback_data="About_msg")]]))
@@ -75,7 +75,7 @@ async def start_handler(event):
 # 	await event.reply_photo("https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
 #                                 caption=Config.START_MSG.format(event.from_user.mention),
 #                                 reply_markup=InlineKeyboardMarkup([
-#                                     [InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies"),
+#                                     [InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix"),
 #                                      InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")],
 #                                     [InlineKeyboardButton("Help", callback_data="Help_msg"),
 #                                      InlineKeyboardButton("About", callback_data="About_msg")]]))
@@ -92,7 +92,7 @@ async def help_handler(_, event: Message):
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies"),
+            [InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix"),
              InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup"),
              InlineKeyboardButton("About", callback_data="About_msg")]
         ])
@@ -253,7 +253,7 @@ async def button(bot, cmd: CallbackQuery):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies"),
+						InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix"),
 						InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")
 					],
 					[
@@ -272,7 +272,7 @@ async def button(bot, cmd: CallbackQuery):
 				[
 					[
 						InlineKeyboardButton("About", callback_data="About_msg"),
-						InlineKeyboardButton("Our Channel", url="https://t.me/iP_Movies")
+						InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix")
 					], 
                                         [
 						InlineKeyboardButton("Owner", url="https://t.me/RoyalKrrishna"),
@@ -294,7 +294,7 @@ async def button(bot, cmd: CallbackQuery):
 					],
 					[
 						InlineKeyboardButton("Support", url="https://t.me/RoyalKrrishna"),
-						InlineKeyboardButton("Channel", url="https://t.me/iP_Movies")
+						InlineKeyboardButton("Channel", url="https://t.me/iPopcornFlix")
 					]
 				]
 			),
