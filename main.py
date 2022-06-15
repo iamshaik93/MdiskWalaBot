@@ -85,7 +85,7 @@ async def help_handler(_, event: Message):
     if await get_user_join(event.sender_id):
         pass
     else:
-        return await event.reply(f'''**Hey! {} 😃**
+        return await event.reply(f'''**Hey! `{}` 😃**
 **Join Our Update Channel To Use Me**
 
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
@@ -110,7 +110,7 @@ async def test(event):
     if await get_user_join(event.sender_id):
         pass
     else:
-        return await event.reply(f'''**Hey! {} 😃**
+        return await event.reply(f'''**Hey! `{}` 😃**
 **Join Our Update Channel To Use Me**
 
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
