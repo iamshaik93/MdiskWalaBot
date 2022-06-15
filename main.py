@@ -87,6 +87,7 @@ async def help_handler(_, event: Message):
     else:
         return await event.reply('''**Hey! 😃**
 **Join Our Update Channel To Use Me**
+
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
@@ -111,6 +112,7 @@ async def test(event):
     else:
         return await event.reply('''**Hey! 😃**
 **Join Our Update Channel To Use Me**
+
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
     answer = f'**📂 {event.text}**\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n'
