@@ -32,23 +32,23 @@ If You Want Your Own Bot Like This Then You Can Contact Our Developer.</b>
 """
 
     HOME_TEXT = """
-**If You Like Me!😘
+Iꜰ Yᴏᴜ Lɪᴋᴇ Mᴇ!😘
 
-Please Share Me With Your 
-Friends And Family.👨‍👨‍👧
+Pʟᴇᴀꜱᴇ Sʜᴀʀᴇ Mᴇ Wɪᴛʜ Yᴏᴜʀ 
+Fʀɪᴇɴᴅꜱ Aɴᴅ Fᴀᴍɪʟʏ.👨‍👨‍👧
 
-Made With ❤ By @RoyalKrrishna**
+Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna
 """
 
 
     START_MSG = """
-**Hey! {}😅,
+**Hᴇʏ! {}😅,
 
-I'm Mdisk Search Robot.🤖
+I'ᴍ Mᴅɪꜱᴋ Sᴇᴀʀᴄʜ Rᴏʙᴏᴛ.🤖
 
-I Can Search 🔍 What You Want❗
+I Cᴀɴ Sᴇᴀʀᴄʜ Mᴏᴠɪᴇꜱ Fᴏʀ Yᴏᴜ.🔍
 
-Made With ❤ By @RoyalKrrishna**
+Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna**
 """
 
 
