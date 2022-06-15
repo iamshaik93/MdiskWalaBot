@@ -86,6 +86,7 @@ async def help_handler(_, event: Message):
         pass
     else:
         return await event.reply(f'''**Hey! @{event.sender.username} 😃**
+
 **You Have To Join Our Update Channel To Use Me.**
 
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
@@ -111,6 +112,7 @@ async def test(event):
         pass
     else:
         return await event.reply(f'''**Hey! @{event.sender.username} 😃**
+
 **You Have To Join Our Update Channel To Use Me.**
 
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
