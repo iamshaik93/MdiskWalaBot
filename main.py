@@ -144,7 +144,7 @@ async def test(event):
                         Button.url('Click To Check Release Date 📅',
                                    f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
     else:
-        buttons = [Button.inline('➡️ Next', f'1next_{args}')]
+        buttons = [Button.inline('Next ➡️', f'1next_{args}')]
         newbutton = None
         pass
     try:
@@ -193,7 +193,7 @@ async def movie_next(event):
                   f_text.split("\n", 2)[
                       -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰**'
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
-                   Button.inline('➡️ Next', f'{index + 1}next_{args}')]
+                   Button.inline('Next ➡️', f'{index + 1}next_{args}')]
     except:
         answer = '**No More Results❗\n\nReason Is❓👇\n\n1 - Wrong Spelling 📌\n2 - Movie Not Released 📌\n3 - OTT, DVD Not Released 📌\n4 - Not Uploaded 📌\n\nType Correct Spelling ✅\nSearch In Google For Correct Name.🔍\n\nRequest Your Movie❗\n👉 @RoyalKrrishna**'
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}')]
@@ -216,10 +216,10 @@ async def movie_next(event):
               f_text.split("\n", 2)[
                   -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰**'
     if index == 0:
-        buttons = [Button.inline('➡️ Next', f'{index + 1}next_{args}')]
+        buttons = [Button.inline('Next ➡️', f'{index + 1}next_{args}')]
     else:
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
-                   Button.inline('➡️ Next', f'{index + 1}next_{args}')]
+                   Button.inline('Next ➡️', f'{index + 1}next_{args}')]
     await event.edit(answer, buttons=buttons)
 
 
