@@ -129,7 +129,7 @@ async def test(event):
             f_text = msg.text.split("|||", 1)[0]
             msg_text = msg.text.html.split("|||", 1)[0]
         answer += f'**🍿 ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[
-            -1] + ' **\n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n**Auto Delete In 5Min...⏰**'
+            -1] + ' **\n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n**Click Next For More Results 👇**'
         c += 1
         break
     if c <= 0:
@@ -191,7 +191,7 @@ async def movie_next(event):
             f_text = f_text.split("|||", 1)[0]
         answer += f'**🍿 ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + \
                   f_text.split("\n", 2)[
-                      -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰**'
+                      -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nClick Next For More Results 👇**'
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
                    Button.inline('Next ➡️', f'{index + 1}next_{args}')]
     except:
@@ -214,7 +214,7 @@ async def movie_next(event):
         f_text = f_text.split("|||", 1)[0]
     answer += f'**🍿 ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + \
               f_text.split("\n", 2)[
-                  -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nAuto Delete In 5Min...⏰**'
+                  -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nClick Next For More Results 👇**'
     if index == 0:
         buttons = [Button.inline('Next ➡️', f'{index + 1}next_{args}')]
     else:
