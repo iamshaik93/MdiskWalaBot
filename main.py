@@ -89,7 +89,7 @@ async def help_handler(_, event: Message):
 
 **You Have To Join Our Update Channel To Use Me.**
 
-**Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
+**Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/iP_Movies_Backup'))
         await asyncio.sleep(300)
         return await haha.delete()
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
@@ -117,7 +117,7 @@ async def test(event):
 
 **You Have To Join Our Update Channel To Use Me.**
 
-**Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/FYM_Update'))
+**Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', 'https://t.me/iP_Movies_Backup'))
         await asyncio.sleep(300)
         return await haha.delete()
     search = client.iter_messages(Config.CHANNEL_ID, limit=10, search=args)
