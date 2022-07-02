@@ -1,15 +1,16 @@
 # (c) @Royalkrrishna
-
+from pyrogram import Client, filters
 import datetime
 from configs import Config
-from handlers.database import Database
+from TeamTeleRoid.database import db
+from pyrogram.types import Message
 
-db = Database(Config.DATABASE_URL, Config.BOT_USERNAME)
-
-
-async def handle_user_status(bot, cmd):
+@Client.on_message(filters.command("start") & filters.private)
+async def handle_user_status(bot:Client, cmd:Message):
     chat_id = cmd.from_user.id
+
     if not await db.is_user_exist(chat_id):
+        print("True")
         await db.add_user(chat_id)
         await bot.send_message(
             Config.LOG_CHANNEL,

@@ -31,7 +31,8 @@
             "description": "Your Bot Username which you sent to @BotFather (Without [@])"
         },
         "BROADCAST_AS_COPY": {
-            "description": "Nothing to Put here."
+            "description": "Nothing to Put here.",
+            "required": "false"
         },
         "BOT_OWNER": {
             "description": "Bot Owner UserID"
@@ -44,8 +45,27 @@
             "required": false
         },
         "CHANNEL_ID": {
-            "description": "Channel ID for Searching Messages."
+            "description": "Channel ID for Searching Messages.",
+            "required": false
+        },
+        "LOG_CHANNEL": {
+            "description": "Log Channel to send bin messages"
+        },
+        "UPDATES_CHANNEL_USERNAME":{
+            "description": "Username of the Channel you entered on UPDATES_CHANNEL without @",
+            "required": false
+        },
+        "RESULTS_COUNT":{
+            "description": "Count of the number of Results",
+            "required": false,
+            "value": "20"
+        },
+        "AUTO_DELETE_TIME":{
+            "description": "Auto deletion time in seconds",
+            "required": false,
+            "value": "300"
         }
+
     },
     "buildpacks": [
         {

@@ -1,5 +1,4 @@
 # (c) @RoyalKrrishna
-
 import time
 import string
 import random
@@ -10,15 +9,26 @@ import traceback
 import aiofiles.os
 from configs import Config
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
+from pyrogram.types import Message
+from pyrogram import Client, filters
+from TeamTeleRoid.database import db
+
 
 broadcast_ids = {}
+
+@Client.on_message(filters.private & filters.command("broadcast") & filters.chat(Config.BOT_OWNER))
+async def broadcast_handler(c:Client, m:Message):
+    if m.reply_to_message:
+        await main_broadcast_handler(m, db)
+    else:
+        await m.reply_text("Reply to the message you want to broadcast")
 
 
 async def send_msg(user_id, message):
     try:
-        if Config.BROADCAST_AS_COPY is False:
+        if Config.BROADCAST_AS_COPY == "False":
             await message.forward(chat_id=user_id)
-        elif Config.BROADCAST_AS_COPY is True:
+        elif Config.BROADCAST_AS_COPY == "True":
             await message.copy(chat_id=user_id)
         return 200, None
     except FloodWait as e:
@@ -34,7 +44,7 @@ async def send_msg(user_id, message):
         return 500, f"{user_id} : {traceback.format_exc()}\n"
 
 
-async def main_broadcast_handler(m, db):
+async def main_broadcast_handler(m:Message, db):
     all_users = await db.get_all_users()
     broadcast_msg = m.reply_to_message
     while True:
@@ -56,7 +66,7 @@ async def main_broadcast_handler(m, db):
         success=success
     )
     async with aiofiles.open('broadcast.txt', 'w') as broadcast_log_file:
-        async for user in all_users:
+        for user in all_users:
             sts, msg = await send_msg(
                 user_id=int(user['id']),
                 message=broadcast_msg

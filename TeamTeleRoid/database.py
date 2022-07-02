@@ -1,16 +1,18 @@
 # (c) @Royalkrrishna
 
 import datetime
-import motor.motor_asyncio
+from webbrowser import get
 from configs import Config
-
+import pymongo
+import ssl
 
 class Database:
-
     def __init__(self, uri, database_name):
-        self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
+        self._client = pymongo.MongoClient(uri, ssl_cert_reqs=ssl.CERT_NONE)
         self.db = self._client[database_name]
-        self.col = self.db.users
+        self.col = self.db['users']
+        self.api_keys = self.db['api_keys']
+        self.groups = self.db['groups']
 
     def new_user(self, id):
         return dict(
@@ -26,14 +28,14 @@ class Database:
 
     async def add_user(self, id):
         user = self.new_user(id)
-        await self.col.insert_one(user)
+        self.col.insert_one(user)
 
     async def is_user_exist(self, id):
-        user = await self.col.find_one({'id': int(id)})
+        user = self.col.find_one({'id': int(id)})
         return True if user else False
 
     async def total_users_count(self):
-        count = await self.col.count_documents({})
+        count = self.col.count_documents({})
         return count
 
     async def get_all_users(self):
@@ -41,7 +43,7 @@ class Database:
         return all_users
 
     async def delete_user(self, user_id):
-        await self.col.delete_many({'id': int(user_id)})
+        self.col.delete_many({'id': int(user_id)})
 
     async def remove_ban(self, id):
         ban_status = dict(
@@ -50,7 +52,7 @@ class Database:
             banned_on=datetime.date.max.isoformat(),
             ban_reason=''
         )
-        await self.col.update_one({'id': id}, {'$set': {'ban_status': ban_status}})
+        self.col.update_one({'id': id}, {'$set': {'ban_status': ban_status}})
 
     async def ban_user(self, user_id, ban_duration, ban_reason):
         ban_status = dict(
@@ -59,7 +61,7 @@ class Database:
             banned_on=datetime.date.today().isoformat(),
             ban_reason=ban_reason
         )
-        await self.col.update_one({'id': user_id}, {'$set': {'ban_status': ban_status}})
+        self.col.update_one({'id': user_id}, {'$set': {'ban_status': ban_status}})
 
     async def get_ban_status(self, id):
         default = dict(
@@ -68,12 +70,86 @@ class Database:
             banned_on=datetime.date.max.isoformat(),
             ban_reason=''
         )
-        user = await self.col.find_one({'id': int(id)})
+        user = self.col.find_one({'id': int(id)})
         return user.get('ban_status', default)
 
     async def get_all_banned_users(self):
         banned_users = self.col.find({'ban_status.is_banned': True})
         return banned_users
 
+    async def add_user_api(self, group_id, api):
+        api_keys = str(group_id)
+
+        api_keys = api_keys.replace('-100', '')
+        api_keys = api_keys.replace('-', '')
+
+        self.api_keys.insert_one(
+            {
+                'api': api,
+                'group_id': int(api_keys)
+            }
+        )
+    
+    async def remove_user_api(self, group_id):
+        group_id = str(group_id)
+        api_keys = group_id.replace('-100', '')
+        api_keys = api_keys.replace('-', '')
+        api_keys = int(api_keys)
+
+        self.groups.delete_many({'group_id': int(api_keys)})
+        self.api_keys.delete_many({'group_id': int(api_keys)})
+
+    async def get_api_id(self, group_id):
+        api_keys = str(group_id)
+        api_keys = api_keys.replace('-100', '')
+        api_keys = api_keys.replace('-', '')
+        api = self.api_keys.find_one({'group_id': int(api_keys)})
+        return api
+
+    async def get_group(self, group_id):
+        api_keys = str(group_id)
+        api_keys = api_keys.replace('-100', '')
+        api_keys = api_keys.replace('-', '')
+        api = self.groups.find_one({'group_id': int(api_keys)})
+        return api
+
+    async def update_user_api(self, group_id, api):
+        api_keys = str(group_id)
+
+        api_keys = api_keys.replace('-100', '')
+        api_keys = api_keys.replace('-', '')
+
+        myquery = {
+                'group_id': int(api_keys)
+            }
+        newvalues = { "$set": {
+                'api': api,
+                'group_id': int(api_keys)
+            } }
+
+        self.api_keys.update_one(myquery, newvalues)
+
+    async def connect(self, group_id,):
+
+        group = str(group_id)
+
+        group = group.replace('-100', '')
+        group = group.replace('-', '')
+        myquery = {
+                'group_id': int(group)
+            }
+
+        self.groups.insert_one(myquery)
+
+    async def disconnect(self, group_id,):
+        group = str(group_id)
+
+        group = group.replace('-100', '')
+        group = group.replace('-', '')
+        myquery = {
+                'group_id': int(group)
+            }
+        self.api_keys.delete_many(myquery)
+        self.groups.delete_many(myquery)
 
 db = Database(Config.DATABASE_URL, Config.BOT_USERNAME)
