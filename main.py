@@ -11,17 +11,6 @@ from telethon.tl.functions.channels import GetParticipantRequest
 from TeamTeleRoid import group_link_convertor
 
 
-<<<<<<< HEAD
-=======
-# Bot Client for Inline Search
-Bot = Client(
-    session_name=Config.BOT_SESSION_NAME,
-    api_id=Config.API_ID,
-    api_hash=Config.API_HASH,
-    bot_token=Config.BOT_TOKEN
-)
-tstring = '1BVtsOI4BuzyVhlBt63D7URUKCbvYHSNEJ8O77T6VkyjWxo2uXQ2LXN-dvVvjI5qIsQXhzgAPB0JnBtxq_EpxPbgTOSKA4JGm3gLlPYy06AvkRbRR4xv5WBiiFSfyZQkHrsifMlB3eP6k-u9CsevlKSoxhPiI7q7olHBfQp9Dc8h9uCzMIiojiAPd0RVQ4Dg8HodMvliC2fYxWEJGJIOUkXJ23a6zi8ZRAbuZfp0YltJrOdKncGESAfNkpx9dWcGcqqsom9rLEZzhxDSoPqVrRIGlu5tjRD-zh0QReI38FMN_0BntIL04W3E89couUVBDAtwGDf_GRdkdTFOr45t4wCa7mAFoWck='
->>>>>>> d5e86adc0323eb67b94d5a659c7369eb21fe0297
 tbot = TelegramClient('mdisktelethonbot', Config.API_ID, Config.API_HASH).start(bot_token=Config.BOT_TOKEN)
 client = TelegramClient(StringSession( Config.USER_SESSION_STRING), Config.API_ID, Config.API_HASH)
 
