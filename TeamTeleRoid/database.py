@@ -8,7 +8,7 @@ import ssl
 
 class Database:
     def __init__(self, uri, database_name):
-        self._client = pymongo.MongoClient(uri, ssl_cert_reqs=ssl.CERT_NONE)
+        self._client = pymongo.MongoClient(uri)
         self.db = self._client[database_name]
         self.col = self.db['users']
         self.api_keys = self.db['api_keys']
