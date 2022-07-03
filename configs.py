@@ -33,7 +33,14 @@ class Config(object):
     ABOUT_HELP_TEXT = """
 <b>Send Your Group ID To Developer And Ask For Connect Your Group.
 
-Then Add This Bot To Your Group As Admin And Send "/add_api Mdisk API" In Your Group.
+Then Add This Bot To Your Group As Admin,
+Then Send "/add_api Mdisk API" In Your Group.
+
+Now All Links Are Converted.😍
+When Users Ask For Any Movie In Your Group!
+Bot Will Give Your Link To Them.🤑
+
+For More Information.👇
 
 👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a></b>
 """
