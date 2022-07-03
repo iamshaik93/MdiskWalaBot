@@ -65,6 +65,12 @@
             "required": false,
             "value": "300"
         }
+        ,
+        "FORCE_SUB":{
+            "description": "Set to true to force a new subscription",
+            "required": false,
+            "value": "False"
+        }
 
     },
     "buildpacks": [

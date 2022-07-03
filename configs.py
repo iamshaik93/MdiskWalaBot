@@ -17,6 +17,7 @@ class Config(object):
     RESULTS_COUNT = int(os.environ.get("RESULTS_COUNT", 20))
     BROADCAST_AS_COPY = os.environ.get("BROADCAST_AS_COPY", "True")
     UPDATES_CHANNEL_USERNAME = os.environ.get("UPDATES_CHANNEL_USERNAME", "")
+    FORCE_SUB = os.environ.get("FORCE_SUB", "False")
     AUTO_DELETE_TIME = int(os.environ.get("AUTO_DELETE_TIME", 300))
     ABOUT_BOT_TEXT = """<b>This is Mdisk Search Robot.
 🤖 My Name: <a href='https://t.me/MdiskSearchRobot'>Mdisk Search Robot</a>

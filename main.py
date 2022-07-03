@@ -16,6 +16,9 @@ client = TelegramClient(StringSession( Config.USER_SESSION_STRING), Config.API_I
 
 
 async def get_user_join(id):
+    if Config.FORCE_SUB == "False":
+        return True
+
     ok = True
     try:
         await tbot(GetParticipantRequest(channel=int(Config.UPDATES_CHANNEL), participant=id))
