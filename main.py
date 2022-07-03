@@ -24,9 +24,14 @@ async def get_user_join(id):
         ok = False
     return ok
 
-@tbot.on(filters.private & filter.command("start"))
-async def start_handler(_, event: Message):
-	await event.reply_photo("https://telegra.ph/file/f35d8b79281781574e6f4.jpg",
+@tbot.on(events.NewMessage(pattern='/start'))
+async def start_handler(event):
+    if not event.is_private:
+        return
+    mid = event.message.id
+    await event.reply('`Please wait...`')
+    await tbot.delete_messages(event.chat_id, [mid + 1, mid + 2])
+    await tbot.send_file(entity=event.chat_id, file="https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
                          caption=Config.START_MSG.format(event.sender.first_name),
                          buttons=[
                              [Button.url("Our Channel", url="https://t.me/iPopcornFlix"),
@@ -34,6 +39,12 @@ async def start_handler(_, event: Message):
                              [Button.inline("Help", "Help_msg"),
                               Button.inline("About", "About_msg")]])
 
+
+
+@tbot.on(events.NewMessage())
+async def removeLivegram(event):
+    if 'livegram' in event.text:
+        await event.delete()
 
 
 @tbot.on(events.NewMessage(incoming=True))
@@ -85,8 +96,8 @@ async def message_handler(event):
         buttons = [Button.inline('Next ➡️', f'1next_{args}')], [Button.inline(f'📑 Pages {1}/{len(finalsearch)}', 'pages')]
         newbutton = None
         pass
-    
-    
+
+
     if not event.is_private:
         answer = await group_link_convertor(event.chat_id, answer)
 
@@ -172,7 +183,7 @@ async def movie_back(event):
     else:
         buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
                    Button.inline('Next ➡️', f'{index + 1}next_{args}')], [Button.inline(f'📑 Pages {index+1}/{len(finalsearch)}', 'pages')]
-                   
+
 
     if not event.is_private:
         answer = await group_link_convertor(event.chat_id, answer)
