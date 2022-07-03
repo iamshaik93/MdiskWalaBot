@@ -32,14 +32,7 @@ async def start_handler(event):
                              [Button.url("Our Channel", url="https://t.me/iPopcornFlix"),
                               Button.url("Our Group", url="https://t.me/iPopcornMovieGroup")],
                              [Button.inline("Help", "Help_msg"),
-                              Button.inline("About", "About_msg")]])
-
-
-
-@tbot.on(events.NewMessage())
-async def removeLivegram(event):
-    if 'livegram' in event.text:
-        await event.delete()
+                              Button.inline("About", "About_msg")]]
 
 
 @tbot.on(events.NewMessage(incoming=True))
