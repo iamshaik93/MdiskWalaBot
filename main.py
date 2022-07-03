@@ -2,7 +2,8 @@
 
 from configs import Config
 from pyrogram import Client, idle
-from pyrogram.types import Message
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InlineQuery, InlineQueryResultArticle, \
+    InputTextMessageContent
 import asyncio
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
