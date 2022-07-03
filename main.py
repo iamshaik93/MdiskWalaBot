@@ -36,13 +36,6 @@ async def start_handler(event):
                               Button.inline("About", "About_msg")]])
 
 
-
-@tbot.on(events.NewMessage())
-async def removeLivegram(event):
-    if 'livegram' in event.text:
-        await event.delete()
-
-
 @tbot.on(events.NewMessage(incoming=True))
 async def message_handler(event):
 
