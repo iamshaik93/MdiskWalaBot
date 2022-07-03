@@ -30,9 +30,12 @@ class Config(object):
 👨‍💻 Created By: <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a></b>
 """
 
-    ABOUT_HELP_TEXT = """<b>👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a>
+    ABOUT_HELP_TEXT = """
+<b>Send Your Group ID To Developer And Ask For Connect Your Group.
 
-If You Want Your Own Bot Like This Then You Can Contact Our Developer.</b>
+Then Add This Bot To Your Group As Admin And Send "/add_api Mdisk API" In Your Group.
+
+👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a></b>
 """
 
     HOME_TEXT = """
