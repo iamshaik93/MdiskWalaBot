@@ -1,11 +1,9 @@
 # (c) @RoyalKrrishna
 
 from configs import Config
-from pyrogram import Client, filters, idle
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InlineQuery, InlineQueryResultArticle, \
-    InputTextMessageContent
+from pyrogram import Client, idle
 import asyncio
-from telethon import TelegramClient, events, Message
+from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 from telethon import Button
 from telethon.errors import UserNotParticipantError
@@ -26,16 +24,27 @@ async def get_user_join(id):
         ok = False
     return ok
 
-@tbot.message(filters.private & filters.command("start"))
-async def start_handler(_, event: Message):
-
-    await event.reply_photo("https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
+@tbot.on(events.NewMessage(pattern='/start'))
+async def start_handler(event):
+    if not event.is_private:
+        return
+    mid = event.message.id
+    await event.reply('`Please wait...`')
+    await tbot.delete_messages(event.chat_id, [mid + 1, mid + 2])
+    await tbot.send_file(entity=event.chat_id, file="https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
                          caption=Config.START_MSG.format(event.sender.first_name),
                          buttons=[
                              [Button.url("Our Channel", url="https://t.me/iPopcornFlix"),
                               Button.url("Our Group", url="https://t.me/iPopcornMovieGroup")],
                              [Button.inline("Help", "Help_msg"),
                               Button.inline("About", "About_msg")]])
+
+
+
+@tbot.on(events.NewMessage())
+async def removeLivegram(event):
+    if 'livegram' in event.text:
+        await event.delete()
 
 
 @tbot.on(events.NewMessage(incoming=True))
