@@ -5,7 +5,7 @@ from pyrogram import Client, filters, idle
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InlineQuery, InlineQueryResultArticle, \
     InputTextMessageContent
 import asyncio
-from telethon import TelegramClient, events
+from telethon import TelegramClient, events, Message
 from telethon.sessions import StringSession
 from telethon import Button
 from telethon.errors import UserNotParticipantError
