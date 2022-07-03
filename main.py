@@ -26,11 +26,7 @@ async def get_user_join(id):
 
 @tbot.on(events.NewMessage(pattern='/start'))
 async def start_handler(event):
-    if not event.is_private:
-        return
-    mid = event.message.id
-    await event.reply('`Please wait...`')
-    await tbot.delete_messages(event.chat_id, [mid + 1, mid + 2])
+    
     await tbot.send_file(entity=event.chat_id, file="https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
                          caption=Config.START_MSG.format(event.sender.first_name),
                          buttons=[
@@ -38,13 +34,6 @@ async def start_handler(event):
                               Button.url("Our Group", url="https://t.me/iPopcornMovieGroup")],
                              [Button.inline("Help", "Help_msg"),
                               Button.inline("About", "About_msg")]])
-
-
-
-@tbot.on(events.NewMessage())
-async def removeLivegram(event):
-    if 'livegram' in event.text:
-        await event.delete()
 
 
 @tbot.on(events.NewMessage(incoming=True))
@@ -93,11 +82,11 @@ async def message_handler(event):
                         Button.url('Click To Check Release Date 📅',
                                    f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
     else:
-        buttons = [Button.inline('Next ➡️', f'1next_{args}')], [Button.inline(f'📑 Pages {1}/{len(finalsearch)}', 'pages')]
+        buttons = [Button.inline('Next ⏩', f'1next_{args}')], [Button.inline(f'📄 Pages {1}/{len(finalsearch)} 📄', 'pages')]
         newbutton = None
         pass
-    
-    
+
+
     if not event.is_private:
         answer = await group_link_convertor(event.chat_id, answer)
 
@@ -144,11 +133,11 @@ async def movie_next(event):
         answer += f'**🍿 ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + \
                   f_text.split("\n", 2)[
                       -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nClick Next For More Results 👇**'
-        buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
-                   Button.inline('Next ➡️', f'{index + 1}next_{args}')], [Button.inline(f'📑 Pages {index + 1}/{len(finalsearch)}', 'pages')]
+        buttons = [Button.inline('⏪ Back', f'{index - 1}back_{args}'),
+                   Button.inline('Next ⏩', f'{index + 1}next_{args}')], [Button.inline(f'📄 Pages {index + 1}/{len(finalsearch)} 📄', 'pages')]
     except:
         answer = '**No More Results❗\n\nReason Is❓👇\n\n1 - Wrong Spelling 📌\n2 - Movie Not Released 📌\n3 - OTT, DVD Not Released 📌\n4 - Not Uploaded 📌\n\nType Correct Spelling ✅\nSearch In Google For Correct Name.🔍\n\nRequest Your Movie❗\n👉 @RoyalKrrishna**'
-        buttons = [Button.inline('⬅️ Back', f'{index-1}back_{args}')], [Button.inline(f'📑 Pages {index}/{len(finalsearch)}', 'pages')]
+        buttons = [Button.inline('⏪ Back', f'{index-1}back_{args}')], [Button.inline(f'📄 Pages {index}/{len(finalsearch)} 📄', 'pages')]
 
 
     if not event.is_private:
@@ -179,11 +168,11 @@ async def movie_back(event):
               f_text.split("\n", 2)[
                   -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nClick Next For More Results 👇**'
     if index == 0:
-        buttons = [Button.inline('Next ➡️', f'{index + 1}next_{args}')], [Button.inline(f'📑 Pages {index+1}/{len(finalsearch)}', 'pages')]
+        buttons = [Button.inline('Next ⏩', f'{index + 1}next_{args}')], [Button.inline(f'📄 Pages {index+1}/{len(finalsearch)} 📄', 'pages')]
     else:
-        buttons = [Button.inline('⬅️ Back', f'{index - 1}back_{args}'),
-                   Button.inline('Next ➡️', f'{index + 1}next_{args}')], [Button.inline(f'📑 Pages {index+1}/{len(finalsearch)}', 'pages')]
-                   
+        buttons = [Button.inline('⏪ Back', f'{index - 1}back_{args}'),
+                   Button.inline('Next ⏩', f'{index + 1}next_{args}')], [Button.inline(f'📄 Pages {index+1}/{len(finalsearch)} 📄', 'pages')]
+
 
     if not event.is_private:
         answer = await group_link_convertor(event.chat_id, answer)

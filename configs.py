@@ -6,7 +6,7 @@ class Config(object):
     API_ID = int(os.environ.get("API_ID", 12345))
     API_HASH = os.environ.get("API_HASH", "")
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-    BOT_SESSION_NAME = os.environ.get("BOT_SESSION_NAME", "MdiskSearchBot")
+    BOT_SESSION_NAME = os.environ.get("BOT_SESSION_NAME", "MdiskSearchRobot")
     USER_SESSION_STRING = os.environ.get("USER_SESSION_STRING", "")
     CHANNEL_ID = int(os.environ.get("CHANNEL_ID", -100))
     BOT_USERNAME = os.environ.get("BOT_USERNAME")
@@ -16,6 +16,7 @@ class Config(object):
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", ""))
     RESULTS_COUNT = int(os.environ.get("RESULTS_COUNT", 20))
     BROADCAST_AS_COPY = os.environ.get("BROADCAST_AS_COPY", "True")
+    UPDATES_CHANNEL_USERNAME = os.environ.get("UPDATES_CHANNEL_USERNAME", "")
     AUTO_DELETE_TIME = int(os.environ.get("AUTO_DELETE_TIME", 300))
     ABOUT_BOT_TEXT = """<b>This is Mdisk Search Robot.
 🤖 My Name: <a href='https://t.me/MdiskSearchRobot'>Mdisk Search Robot</a>
@@ -29,9 +30,19 @@ class Config(object):
 👨‍💻 Created By: <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a></b>
 """
 
-    ABOUT_HELP_TEXT = """<b>👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a>
+    ABOUT_HELP_TEXT = """
+<b>Send Your Group ID To Developer And Ask For Connect Your Group.
 
-If You Want Your Own Bot Like This Then You Can Contact Our Developer.</b>
+Then Add This Bot To Your Group As Admin,
+Then Send "/add_api Mdisk API" In Your Group.
+
+Now All Links Are Converted.😍
+When Users Ask For Any Movie In Your Group!
+Bot Will Give Your Link To Them.🤑
+
+For More Information.👇
+
+👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a></b>
 """
 
     HOME_TEXT = """
@@ -51,7 +62,9 @@ I'ᴍ Mᴅɪꜱᴋ Sᴇᴀʀᴄʜ Rᴏʙᴏᴛ.🤖
 
 I Cᴀɴ Sᴇᴀʀᴄʜ Mᴏᴠɪᴇꜱ Fᴏʀ Yᴏᴜ.🔍
 
-Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna**
+Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna
+
+Want To Earn Money.🤑 /help 👈**
 """
 
 
