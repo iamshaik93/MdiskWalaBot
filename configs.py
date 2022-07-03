@@ -62,7 +62,9 @@ I'ᴍ Mᴅɪꜱᴋ Sᴇᴀʀᴄʜ Rᴏʙᴏᴛ.🤖
 
 I Cᴀɴ Sᴇᴀʀᴄʜ Mᴏᴠɪᴇꜱ Fᴏʀ Yᴏᴜ.🔍
 
-Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna**
+Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna
+
+Want To Earn Money.🤑 /help 👈**
 """
 
 
