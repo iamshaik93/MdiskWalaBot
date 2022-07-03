@@ -28,6 +28,7 @@ async def get_user_join(id):
 
 @tbot.on(events.NewMessage(pattern='/start'))
 async def start_handler(_,event: Message):
+
     await event.reply_photo("https://telegra.ph/file/3ff4dce771db4c22b0160.jpg",
                          caption=Config.START_MSG.format(event.sender.first_name),
                          buttons=[
