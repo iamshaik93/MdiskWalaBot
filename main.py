@@ -82,7 +82,7 @@ async def message_handler(event):
                         Button.url('Click To Check Release Date 📅',
                                    f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
     else:
-        buttons = [Button.inline('Next ⏩', f'1next_{args}')], [Button.inline(f'📑 Pages {1}/{len(finalsearch)}', 'pages')]
+        buttons = [Button.inline('Next ⏩', f'1next_{args}')], [Button.inline(f'📄 Pages {1}/{len(finalsearch)} 📄', 'pages')]
         newbutton = None
         pass
 
@@ -134,10 +134,10 @@ async def movie_next(event):
                   f_text.split("\n", 2)[
                       -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nClick Next For More Results 👇**'
         buttons = [Button.inline('⏪ Back', f'{index - 1}back_{args}'),
-                   Button.inline('Next ⏩', f'{index + 1}next_{args}')], [Button.inline(f'📑 Pages {index + 1}/{len(finalsearch)}', 'pages')]
+                   Button.inline('Next ⏩', f'{index + 1}next_{args}')], [Button.inline(f'📄 Pages {index + 1}/{len(finalsearch)} 📄', 'pages')]
     except:
         answer = '**No More Results❗\n\nReason Is❓👇\n\n1 - Wrong Spelling 📌\n2 - Movie Not Released 📌\n3 - OTT, DVD Not Released 📌\n4 - Not Uploaded 📌\n\nType Correct Spelling ✅\nSearch In Google For Correct Name.🔍\n\nRequest Your Movie❗\n👉 @RoyalKrrishna**'
-        buttons = [Button.inline('⏪ Back', f'{index-1}back_{args}')], [Button.inline(f'📑 Pages {index}/{len(finalsearch)}', 'pages')]
+        buttons = [Button.inline('⏪ Back', f'{index-1}back_{args}')], [Button.inline(f'📄 Pages {index}/{len(finalsearch)} 📄', 'pages')]
 
 
     if not event.is_private:
@@ -168,10 +168,10 @@ async def movie_back(event):
               f_text.split("\n", 2)[
                   -1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nClick Next For More Results 👇**'
     if index == 0:
-        buttons = [Button.inline('Next ⏩', f'{index + 1}next_{args}')], [Button.inline(f'📑 Pages {index+1}/{len(finalsearch)}', 'pages')]
+        buttons = [Button.inline('Next ⏩', f'{index + 1}next_{args}')], [Button.inline(f'📄 Pages {index+1}/{len(finalsearch)} 📄', 'pages')]
     else:
         buttons = [Button.inline('⏪ Back', f'{index - 1}back_{args}'),
-                   Button.inline('Next ⏩', f'{index + 1}next_{args}')], [Button.inline(f'📑 Pages {index+1}/{len(finalsearch)}', 'pages')]
+                   Button.inline('Next ⏩', f'{index + 1}next_{args}')], [Button.inline(f'📄 Pages {index+1}/{len(finalsearch)} 📄', 'pages')]
 
 
     if not event.is_private:
