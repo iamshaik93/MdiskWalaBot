@@ -24,7 +24,7 @@ async def get_user_join(id):
         ok = False
     return ok
 
-@tbot.on_message(filters.private & filters.command("start"))
+@tbot.on(filters.private & filters.command("start"))
 async def start_handler(_, event: Message):
 	await event.reply_photo("https://telegra.ph/file/f35d8b79281781574e6f4.jpg",
                          caption=Config.START_MSG.format(event.sender.first_name),
