@@ -1,7 +1,7 @@
 # (c) @RoyalKrrishna
 
 from configs import Config
-from pyrogram import Client, idle
+from pyrogram import Client, filters, idle
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InlineQuery, InlineQueryResultArticle, \
     InputTextMessageContent
 import asyncio
