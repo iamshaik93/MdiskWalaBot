@@ -5,7 +5,7 @@ from configs import Config
 from TeamTeleRoid.database import db
 from pyrogram.types import Message
 
-@Client.on_message(filters.command("start") & filters.private)
+@Client.on_message(filters.private)
 async def handle_user_status(bot:Client, cmd:Message):
     chat_id = cmd.from_user.id
 
