@@ -1,7 +1,5 @@
 from telegraph.aio import Telegraph
-import re
 import markdown
-import gh_md_to_html
 
 
 async def telegraph_handler(title, html, author):
