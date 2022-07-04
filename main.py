@@ -20,7 +20,6 @@ tbot = TelegramClient('mdisktelethonbot', Config.API_ID, Config.API_HASH).start(
 client = TelegramClient(StringSession( Config.USER_SESSION_STRING), Config.API_ID, Config.API_HASH)
 
 
-
 async def get_user_join(id):
     if Config.FORCE_SUB == "False":
         return True
@@ -36,12 +35,12 @@ async def get_user_join(id):
 
 @tbot.on(events.NewMessage(incoming=True))
 async def message_handler(event):
+    print("\n")
     print("Message Received: " + event.text)
     # if event.is_channel:return
     if event.text.startswith("/"):return
 
     # Force Subscription
-    
     if  not await get_user_join(event.sender_id):
         haha = await event.reply(f'''**Hey! {event.sender.first_name} 😃**
 **You Have To Join Our Update Channel To Use Me.**
@@ -56,6 +55,8 @@ async def message_handler(event):
     args = await validate_q(args)
 
     print("Search Query: {args}".format(args=args))
+    print("\n")
+    
     if not args:
         return
 
@@ -109,9 +110,9 @@ async def message_handler(event):
         answer += f"\n\n📂 **Join @{Config.UPDATES_CHANNEL_USERNAME}**"
         answer = await replace_username(answer)
         html_content = await markdown_to_html(answer)
-        make_bold_content = await make_bold(html_content)
+        # html_content = await make_bold(html_content)
         tgraph_result = await telegraph_handler(
-            html=make_bold_content,
+            html=html_content,
             title=event.text,
             author=Config.BOT_USERNAME
         )
