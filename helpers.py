@@ -19,7 +19,7 @@ async def replace_username(text):
 async def link_to_hyperlink(string):
 	http_links = await extract_link(string)
 	for link in http_links:
-		string = string.replace(link, f"[{link}]({link})")
+		string = string.replace(link, f"[Link]({link})")
 	return string
 
 
