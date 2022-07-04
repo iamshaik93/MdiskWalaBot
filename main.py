@@ -56,10 +56,10 @@ async def message_handler(event):
     args = await validate_q(args)
 
     print("Search Query: {args}".format(args=args))
-
     if not args:
         return
 
+    txt = await event.reply('**🔎 Searching for movie "{}"**'.format(event.text))
     search = []
     for i in args.split():
         search_msg = client.iter_messages(Config.CHANNEL_ID, limit=5, search=i)
@@ -72,7 +72,7 @@ async def message_handler(event):
     for msg_list in search:
         async for msg in msg_list:
             c += 1
-            f_text = msg.text
+            f_text = msg.text.replace("*", "")
 
             if event.is_group or event.is_channel:
                 f_text = await group_link_convertor(event.chat_id, f_text)
@@ -98,7 +98,7 @@ async def message_handler(event):
                                 f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie')], [
                         Button.url('Click To Check Release Date 📅',
                                    f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
-
+        await txt.delete()
         return await event.reply(answer, buttons=newbutton, link_preview=False)
     else:
         pass
@@ -116,6 +116,8 @@ async def message_handler(event):
     message = f'**Search Result for "{event.text}"**\n\n**[🍿🎬 {str(event.text).upper()}\n🍿🎬 {str("Click here for movie").upper()}]({tgraph_result})**'
     button =  [Button.url('How to Download',
                                 f'http://www.google.com/')]
+
+    await txt.delete()
     result = await event.reply(message, buttons=button, link_preview=False)
     await asyncio.sleep(Config.AUTO_DELETE_TIME)
     await event.delete()
