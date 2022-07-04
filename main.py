@@ -92,7 +92,7 @@ async def message_handler(event):
     else:
         pass
 
-    if not event.is_group:
+    if event.is_group:
         answer = await group_link_convertor(event.chat_id, answer)
 
     answer += f"\n\n📂 **Join @{Config.UPDATES_CHANNEL_USERNAME}**"
