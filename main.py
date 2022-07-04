@@ -115,7 +115,7 @@ async def message_handler(event):
             title=event.text,
             author=Config.BOT_USERNAME
         )
-        message = f'**Search Result for "{event.text}"**\n\n**[🍿🎬 {str(event.text).upper()}\n🍿🎬 {str("Click here for movie").upper()}]({tgraph_result})**'
+        message = f'**Click Here 👇 For "{event.text}"**\n\n**[🍿🎬 {str(event.text).upper()}\n🍿🎬 {str("Click me for results").upper()}]({tgraph_result})**'
         button =  [Button.url('How to Download',
                                     f'http://www.google.com/')]
 
