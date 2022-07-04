@@ -11,3 +11,4 @@ requests
 telegraph[aio]
 markdown
 aiohttp
+markdown-to-html

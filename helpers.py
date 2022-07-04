@@ -3,8 +3,6 @@ from configs import Config
 
 import json
 import re
-import aiohttp
-import requests
 from pyrogram import Client
 from pyrogram.types import Message
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -17,18 +15,11 @@ async def replace_username(text):
 	return text
 
 
+#####################  Make link to hyperlink ####################
 async def link_to_hyperlink(string):
-	"""
-	It takes a string, finds all the links in it, and replaces them with HTML hyperlinks
-	
-	:param string: The string to be formatted
-	:return: A string with the links replaced with html format.
-	"""
 	http_links = await extract_link(string)
-	html_format = "<a href= {link} > {link} </a>"
-
 	for link in http_links:
-		string = string.replace(link, html_format.format(link=link), 1)
+		string = string.replace(link, f"[👉 {link} 🔗]({link})")
 	return string
 
 

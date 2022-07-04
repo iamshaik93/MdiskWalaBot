@@ -15,6 +15,7 @@ async def telegraph_handler(title, html, author):
 
 
 async def markdown_to_html(markdown_txt):
-    html = markdown.markdown(markdown_txt)
+    md = markdown.Markdown()
+    html = md.convert(markdown_txt)
     return html
 
