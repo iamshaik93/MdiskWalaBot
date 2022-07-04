@@ -94,7 +94,7 @@ async def message_handler(event):
 
 **Type Only Movie Name 💬**
 **Check Spelling On** [Google](http://www.google.com/search?q={event.text.replace(' ', '%20')}%20Movie) 🔍
-        '''
+'''
 
             newbutton = [Button.url('Click To Check Spelling ✅',
                                     f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie')], [
