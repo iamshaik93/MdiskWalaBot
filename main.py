@@ -81,7 +81,7 @@ async def message_handler(event):
                     f_text = await group_link_convertor(event.chat_id, f_text)
 
                 f_text = await link_to_hyperlink(f_text)
-                answer += f'\n\n\n\n**✅ PAGE {c}:**\n\n━━━━━━━━━\n\n\n\n' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[
+                answer += f'\n\n**✅ PAGE {c}:**\n\n━━━━━━━━━\n\n' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[
                     -1] 
                 
             # break
@@ -90,7 +90,7 @@ async def message_handler(event):
             finalsearch.append(msg)
 
         if c <= 0:
-            answer = f'''**No Results Found For {event.text}❗️**
+            answer = f'''**No Results Found For {event.text}**
 
 **Type Only Movie Name 💬**
 **Check Spelling On** [Google](http://www.google.com/search?q={event.text.replace(' ', '%20')}%20Movie) 🔍
@@ -115,7 +115,7 @@ async def message_handler(event):
             title=event.text,
             author=Config.BOT_USERNAME
         )
-        message = f'**Click Here 👇 For "{event.text}"**\n\n**[🍿🎬 {str(event.text).upper()}\n🍿🎬 {str("Click me for results").upper()}]({tgraph_result})**'
+        message = f'**Click Here 👇 For "{event.text}"**\n\n[🍿🎬 {str(event.text).upper()}\n🍿🎬 {str("Click me for results").upper()}]({tgraph_result})'
         button =  [Button.url('How to Download',
                                     f'http://www.google.com/')]
 
