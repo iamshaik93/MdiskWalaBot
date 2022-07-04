@@ -29,7 +29,7 @@ async def total_users(_, event: Message):
 async def start_handler(_,event: Message):
     await event.reply_photo(
         photo='https://telegra.ph/file/3ff4dce771db4c22b0160.jpg',
-        caption=Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
+        caption=Config.START_MSG.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix"),
              InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")],

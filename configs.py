@@ -56,7 +56,6 @@ Fʀɪᴇɴᴅꜱ Aɴᴅ Fᴀᴍɪʟʏ.👨‍👨‍👧
 Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna
 """
 
-
     START_MSG = """
 **Hᴇʏ! {}😅,
 
