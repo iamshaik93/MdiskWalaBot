@@ -70,6 +70,11 @@
             "description": "Set to true to force a new subscription",
             "required": false,
             "value": "False"
+        },
+        "MDISK_API":{
+            "description": "Mdisk API",
+            "required": true,
+            "value": ""
         }
 
     },

@@ -1,16 +1,14 @@
-import json
+
 import re
-from pyrogram import Client, filters
-from pyrogram.types import Message
 from TeamTeleRoid.database import db
 from configs import Config
 import requests
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message
 
 
 # ##############################################################################################################
         
-async def get_mdisk(link, api):
+async def get_mdisk(link, api=Config.MDISK_API):
     url = 'https://diskuploader.mypowerdisk.com/v1/tp/cp'
     param = {'token': api, 'link': link
              }
@@ -23,7 +21,7 @@ async def get_mdisk(link, api):
     return link
 
 
-async def replace_mdisk_link(text, api):
+async def replace_mdisk_link(text, api=Config.MDISK_API):
     links = re.findall(r'https?://mdisk.me[^\s]+', text)
 
     for link in links:

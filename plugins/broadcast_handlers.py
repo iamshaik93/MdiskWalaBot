@@ -16,7 +16,7 @@ from TeamTeleRoid.database import db
 
 broadcast_ids = {}
 
-@Client.on_message(filters.private & filters.command("broadcast") & filters.chat(Config.BOT_OWNER))
+@Client.on_message(filters.command("broadcast") & filters.private & filters.chat(Config.BOT_OWNER))
 async def broadcast_handler(c:Client, m:Message):
     if m.reply_to_message:
         await main_broadcast_handler(m, db)

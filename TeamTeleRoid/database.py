@@ -13,6 +13,7 @@ class Database:
         self.col = self.db['users']
         self.api_keys = self.db['api_keys']
         self.groups = self.db['groups']
+        self.channels = self.db['channels']
 
     def new_user(self, id):
         return dict(
@@ -151,5 +152,44 @@ class Database:
             }
         self.api_keys.delete_many(myquery)
         self.groups.delete_many(myquery)
+
+    async def allow(self, channel_id,):
+        channel = str(channel_id)
+        channel = channel.replace('-100', '')
+        channel = channel.replace('-', '')
+        myquery = {
+                'status': 'allowed',
+                'channel_id': int(channel)
+            }
+        self.channels.insert_one(myquery)
+
+    async def disallow(self, channel_id,):
+        channel = str(channel_id)
+        channel = channel.replace('-100', '')
+        channel = channel.replace('-', '')
+        myquery = {
+                'channel_id': int(channel)
+            }
+        self.channels.delete_many(myquery)
+
+
+    async def get_channel(self, channel_id,):
+        channel = str(channel_id)
+        channel = channel.replace('-100', '')
+        channel = channel.replace('-', '')
+        myquery = {
+                'channel_id': int(channel)
+            }
+        x= self.channels.find_one(myquery)
+        if x:return x   
+
+    async def get_channel_count(self):
+        channels_count = self.channels.count_documents({"status":"allowed"})
+        channels = self.channels.find({"status":"allowed"})
+        
+        return {
+            "count": int(channels_count),
+            "channels":channels
+        }
 
 db = Database(Config.DATABASE_URL, Config.BOT_USERNAME)
