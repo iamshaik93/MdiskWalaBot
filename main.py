@@ -80,8 +80,7 @@ async def message_handler(event):
                 if event.is_group or event.is_channel:
                     f_text = await group_link_convertor(event.chat_id, f_text)
 
-                f_text = await link_to_hyperlink(f_text)
-
+                # f_text = await link_to_hyperlink(f_text)
                 answer += f'\n\n**▰▱▰▱▰ Page {c} ▰▱▰▱▰**\n\n\n🍿 ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[
                     -1] 
                 
@@ -93,8 +92,8 @@ async def message_handler(event):
         if c <= 0:
             answer = f'''**No Results Found For `{event.text}`❗️**
 
-    **Type Only Movie Name 💬**
-    **Check Spelling On** [Google](http://www.google.com/search?q={event.text.replace(' ', '%20')}%20Movie) 🔍
+**Type Only Movie Name 💬**
+**Check Spelling On** [Google](http://www.google.com/search?q={event.text.replace(' ', '%20')}%20Movie) 🔍
         '''
 
             newbutton = [Button.url('Click To Check Spelling ✅',
@@ -110,7 +109,7 @@ async def message_handler(event):
         answer += f"\n\n📂 **Join @{Config.UPDATES_CHANNEL_USERNAME}**"
         answer = await replace_username(answer)
         html_content = await markdown_to_html(answer)
-        # html_content = await make_bold(html_content)
+        html_content = await make_bold(html_content)
         tgraph_result = await telegraph_handler(
             html=html_content,
             title=event.text,
@@ -129,7 +128,7 @@ async def message_handler(event):
     except Exception as e:
         print(e)
         await txt.delete()
-        result = await event.reply("Some  error occurred while searching for movie")
+        result = await event.reply("Some error occurred while searching for movie")
         await asyncio.sleep(Config.AUTO_DELETE_TIME)
         await event.delete() 
         return await result.delete()
