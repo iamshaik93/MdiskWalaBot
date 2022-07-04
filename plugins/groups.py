@@ -3,7 +3,7 @@ import re
 from TeamTeleRoid.database import db
 from configs import Config
 import requests
-from pyrogram.types import Message
+
 
 
 # ##############################################################################################################
@@ -13,6 +13,7 @@ async def get_mdisk(link, api=Config.MDISK_API):
     param = {'token': api, 'link': link
              }
     res = requests.post(url, json=param)
+
     try:
         shareLink = res.json()
         link = shareLink["sharelink"]
@@ -23,10 +24,8 @@ async def get_mdisk(link, api=Config.MDISK_API):
 
 async def replace_mdisk_link(text, api=Config.MDISK_API):
     links = re.findall(r'https?://mdisk.me[^\s]+', text)
-
     for link in links:
         mdisk_link = await get_mdisk(link, api)
-
         text = text.replace(link, mdisk_link)
 
     return text
@@ -34,11 +33,9 @@ async def replace_mdisk_link(text, api=Config.MDISK_API):
 
 async def group_link_convertor(group_id, text):
     api = await db.get_api_id(group_id)
-
     if api:
-        answer = await replace_mdisk_link(text, api['api'])
+        answer = await replace_mdisk_link(text, str(api['api']))
     else:
         answer = text
     return answer
 
-    

@@ -1,5 +1,6 @@
 # (c) @RoyalKrrishna
 
+from cmath import e
 from os import link
 from telethon import Button
 from configs import Config
@@ -35,23 +36,30 @@ async def get_user_join(id):
 
 @tbot.on(events.NewMessage(incoming=True))
 async def message_handler(event):
-    if event.is_channel:return
+    print("Message Received: " + event.text)
+    # if event.is_channel:return
     if event.text.startswith("/"):return
 
     # Force Subscription
     
-    if await get_user_join(event.sender_id):
-        pass
-    else:
+    if  not await get_user_join(event.sender_id):
         haha = await event.reply(f'''**Hey! {event.sender.first_name} 😃**
 **You Have To Join Our Update Channel To Use Me.**
 **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}'))
         await asyncio.sleep(Config.AUTO_DELETE_TIME)
         return await haha.delete()
 
-    print("Message Received: " + event.text)
+    
+    print("Group: " + str(event.is_group))
+    print("Channel: " + str(event.is_channel))
     args = event.text
     args = await validate_q(args)
+
+    print("Search Query: {args}".format(args=args))
+
+    if not args:
+        return
+
     search = []
     for i in args.split():
         search_msg = client.iter_messages(Config.CHANNEL_ID, limit=5, search=i)
@@ -65,6 +73,9 @@ async def message_handler(event):
         async for msg in msg_list:
             c += 1
             f_text = msg.text
+
+            if event.is_group or event.is_channel:
+                f_text = await group_link_convertor(event.chat_id, f_text)
 
             f_text = await link_to_hyperlink(f_text)
 
@@ -92,8 +103,6 @@ async def message_handler(event):
     else:
         pass
 
-    if event.is_group:
-        answer = await group_link_convertor(event.chat_id, answer)
 
     answer += f"\n\n📂 **Join @{Config.UPDATES_CHANNEL_USERNAME}**"
     answer = await replace_username(answer)

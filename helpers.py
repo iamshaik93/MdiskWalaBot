@@ -25,7 +25,7 @@ async def link_to_hyperlink(string):
 	:return: A string with the links replaced with html format.
 	"""
 	http_links = await extract_link(string)
-	html_format = "<a href={link}>{link}</a>"
+	html_format = "<a href= {link} > {link} </a>"
 
 	for link in http_links:
 		string = string.replace(link, html_format.format(link=link), 1)
@@ -101,36 +101,36 @@ async def main_convertor_handler(c:Client, message:Message, type:str, edit_capti
 
 		if message.text:
 			if edit_caption:
-				return await message.edit(f"**{txt}**", reply_markup=InlineKeyboardMarkup(buttsons))
+				return await message.edit(txt, reply_markup=InlineKeyboardMarkup(buttsons))
 
-			await message.reply(text=f"**{txt}**", reply_markup=InlineKeyboardMarkup(buttsons))
+			await message.reply(text=txt, reply_markup=InlineKeyboardMarkup(buttsons))
 
 		elif message.caption:
 			if edit_caption:
-				return await message.edit_caption(f"**{txt}**", reply_markup=InlineKeyboardMarkup(buttsons))
+				return await message.edit_caption(txt, reply_markup=InlineKeyboardMarkup(buttsons))
 
 			if message.photo:
-				await message.reply_photo(photo=message.photo.file_id, caption=f"**{txt}**",
+				await message.reply_photo(photo=message.photo.file_id, caption=txt,
 											reply_markup=InlineKeyboardMarkup(buttsons))
 			elif message.document:
-				await message.reply_document(document=message.document.file_id, caption=f"**{txt}**",
+				await message.reply_document(document=message.document.file_id, caption=txt,
 												reply_markup=InlineKeyboardMarkup(buttsons))
 
 
 	elif message.text:
-		text = str(message.text	)
+		text = str(message.text)
 		if user_method == "droplink" and "|" in text:
 			alias = text.split('|')[1].replace(" ", "")
 			if len(text) < 30:
 				links = re.findall(r'https?://[^\s]+', text)[0]
 				link = await method_func(links, alias) 
-				await message.reply_text(f"**{link}**")
+				await message.reply_text(f"{link}")
 				return
 
 		link = await method_func(text)
 
 		if edit_caption:
-			return await message.edit(f"**{link}**")
+			return await message.edit(f"{link}")
 
 		await message.reply_text(f"**{link}**")
 
@@ -140,9 +140,9 @@ async def main_convertor_handler(c:Client, message:Message, type:str, edit_capti
 		link = await method_func(text)
 
 		if edit_caption:
-			return await message.edit_caption(f"**{link}**")
+			return await message.edit_caption(f"{link}")
 
-		await message.reply_photo(fileid, caption=f"**{link}**")
+		await message.reply_photo(fileid, caption=f"{link}")
 
 	elif message.document:  # for document messages
 		fileid = message.document.file_id
@@ -150,10 +150,10 @@ async def main_convertor_handler(c:Client, message:Message, type:str, edit_capti
 		link = await method_func(text)
 
 		if edit_caption:
-			return await message.edit_caption(f"**{link}**")
+			return await message.edit_caption(f"{link}")
 
 
-		await message.reply_document(fileid, caption=f"**{link}**")
+		await message.reply_document(fileid, caption=f"{link}")
 
 
 
