@@ -117,8 +117,8 @@ async def message_handler(event):
             author=Config.BOT_USERNAME
         )
         message = f'**Click Here 👇 For "{event.text}"**\n\n[🍿🎬 {str(event.text).upper()}\n🍿🎬 {str("Click me for results").upper()}]({tgraph_result})'
-        button =  [Button.url('How to Download',
-                                    f'http://www.google.com/')]
+        button =  [Button.url('Backup Channel',
+                                    f'https://t.me/iP_Movies_Backup')]
 
         await txt.delete()
         result = await event.reply(message, buttons=button, link_preview=False)
