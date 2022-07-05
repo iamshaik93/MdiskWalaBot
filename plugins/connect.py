@@ -2,7 +2,7 @@
 # (c) @RoyalKrrishna
 from TeamTeleRoid.database import db
 from configs import Config
-from pyrogram import Client, filters, idle
+from pyrogram import Client, filters
 from pyrogram.types import Message
 
 @Client.on_message(filters.command("connect") & filters.chat(Config.BOT_OWNER) & filters.private)

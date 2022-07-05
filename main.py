@@ -1,6 +1,5 @@
 # (c) @RoyalKrrishna
 
-from cmath import e
 from os import link
 from telethon import Button
 from configs import Config
@@ -8,7 +7,6 @@ from pyrogram import Client, idle
 import asyncio
 from telethon import TelegramClient
 from telethon.sessions import StringSession
-from TeamTeleRoid import group_link_convertor
 from plugins.tgraph import *
 from helpers import *
 from telethon import TelegramClient, events
@@ -64,15 +62,16 @@ async def message_handler(event):
 
     try:
         search = []
-        for i in args.split():
+        async for i in AsyncIter(args.split()):
             search_msg = client.iter_messages(Config.CHANNEL_ID, limit=5, search=i)
             search.append(search_msg)
 
-        answer = f'📂 **Join @{Config.UPDATES_CHANNEL_USERNAME}**\n\n'
+        username = Config.UPDATES_CHANNEL_USERNAME
+        answer = f'📂 **Join** [@{username}](https://telegram.me/{username}) \n\n'
 
         c = 0
 
-        for msg_list in search:
+        async for msg_list in AsyncIter(search):
             async for msg in msg_list:
                 c += 1
                 f_text = msg.text.replace("*", "")
@@ -86,7 +85,7 @@ async def message_handler(event):
                 
             # break
         finalsearch = []
-        for msg in search:
+        async for msg in AsyncIter(search):
             finalsearch.append(msg)
 
         if c <= 0:
@@ -106,7 +105,7 @@ async def message_handler(event):
             pass
 
 
-        answer += f"\n\n📂 **Join @{Config.UPDATES_CHANNEL_USERNAME}**"
+        answer = f'📂 **Join** [@{username}](https://telegram.me/{username}) \n\n'
         answer = await replace_username(answer)
         html_content = await markdown_to_html(answer)
         html_content = await make_bold(html_content)

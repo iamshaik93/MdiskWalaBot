@@ -1,10 +1,9 @@
 # (c) @Royalkrrishna
 
 import datetime
-from webbrowser import get
 from configs import Config
 import pymongo
-import ssl
+
 
 class Database:
     def __init__(self, uri, database_name):

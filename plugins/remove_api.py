@@ -1,10 +1,7 @@
 
-import re
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from TeamTeleRoid.database import db
-from configs import Config
-import requests
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 VERIFY = {}

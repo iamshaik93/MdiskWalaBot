@@ -1,16 +1,17 @@
 import re
 from configs import Config
-
+import requests
 import json
 import re
 from pyrogram import Client
 from pyrogram.types import Message
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from plugins.groups import replace_mdisk_link
+from helpers import *
+from TeamTeleRoid.database import db
 
 async def replace_username(text):
 	usernames = re.findall("([@#][A-Za-z0-9_]+)", text)
-	for i in usernames:
+	async for i in AsyncIter(usernames):
 		text = text.replace(i, f"@{Config.UPDATES_CHANNEL_USERNAME}")
 	return text
 
@@ -18,7 +19,7 @@ async def replace_username(text):
 #####################  Make link to hyperlink ####################
 async def link_to_hyperlink(string):
 	http_links = await extract_link(string)
-	for link in http_links:
+	async for link in AsyncIter(http_links):
 		string = string.replace(link, f"[{link}]({link})")
 	return string
 
@@ -61,7 +62,6 @@ async def validate_q(q):
 
 
 
-
 # Converter
 async def main_convertor_handler(c:Client, message:Message, type:str, edit_caption:bool=False):
 # A function that takes a message and a type and converts the message to the type.
@@ -76,9 +76,9 @@ async def main_convertor_handler(c:Client, message:Message, type:str, edit_capti
 		txt = str(message.text)
 		reply_markup = json.loads(str(message.reply_markup))
 		buttsons = []
-		for i, markup in enumerate(reply_markup["inline_keyboard"]):
+		async for i, markup in enumerate(AsyncIter(reply_markup["inline_keyboard"])):
 			buttons = []
-			for j in markup:
+			async for j in AsyncIter(markup):
 				text = j["text"]
 				url = j["url"]
 				url = await method_func(url)
@@ -160,3 +160,46 @@ async def make_bold(string):
 	string = string.replace("<p>" ,"<p><strong>")
 	string = string.replace("</p>" ,"</strong></p>")
 	return string
+
+
+class AsyncIter:    
+    def __init__(self, items):    
+        self.items = items    
+
+    async def __aiter__(self):    
+        for item in self.items:    
+            yield item    
+
+
+# ################################################### Mdisk Convertor #########################################################
+        
+async def get_mdisk(link, api=Config.MDISK_API):
+    url = 'https://diskuploader.mypowerdisk.com/v1/tp/cp'
+    param = {'token': api, 'link': link
+             }
+    res = requests.post(url, json=param)
+
+    try:
+        shareLink = res.json()
+        link = shareLink["sharelink"]
+    except Exception as e:
+        print(e)
+    return link
+
+
+async def replace_mdisk_link(text, api=Config.MDISK_API):
+    links = re.findall(r'https?://mdisk.me[^\s]+', text)
+    async for link in AsyncIter(links):
+        mdisk_link = await get_mdisk(link, api)
+        text = text.replace(link, mdisk_link)
+
+    return text
+
+
+async def group_link_convertor(group_id, text):
+    api = await db.get_api_id(group_id)
+    if api:
+        answer = await replace_mdisk_link(text, str(api['api']))
+    else:
+        answer = text
+    return answer
