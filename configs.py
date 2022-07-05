@@ -21,11 +21,12 @@ class Config(object):
     AUTO_DELETE_TIME = int(os.environ.get("AUTO_DELETE_TIME", 300))
     MDISK_API = os.environ.get("MDISK_API", "12334")
     ABOUT_BOT_TEXT = """<b>This is Mdisk Search Robot.
+
 🤖 My Name: <a href='https://t.me/MdiskSearchRobot'>Mdisk Search Robot</a>
 
 📝 Language : <a href='https://www.python.org'> Python V3</a>
 
-📚 Library: <a href='https://docs.pyrogram.org'> Pyrogram</a>
+📚 Library: <a href='https://docs.telethon.org'>Telethon</a>
 
 📡 Server: <a href='https://heroku.com'>Heroku</a>
 
@@ -33,17 +34,7 @@ class Config(object):
 """
 
     ABOUT_HELP_TEXT = """
-<b>Send Your Group ID To Developer And Ask For Connect Your Group.
-
-Then Add This Bot To Your Group As Admin,
-Then Send "/add_api Mdisk API" In Your Group.
-
-Now All Links Are Converted.😍
-When Users Ask For Any Movie In Your Group!
-Bot Will Give Your Link To Them.🤑
-
-For More Information.👇
-
+<b>
 👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a></b>
 """
 
@@ -63,7 +54,5 @@ I'ᴍ Mᴅɪꜱᴋ Sᴇᴀʀᴄʜ Rᴏʙᴏᴛ.🤖
 
 I Cᴀɴ Sᴇᴀʀᴄʜ Mᴏᴠɪᴇꜱ Fᴏʀ Yᴏᴜ.🔍
 
-Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna
-
-Want To Earn Money.🤑 /help 👈**
+Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna**
 """
