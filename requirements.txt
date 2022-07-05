@@ -9,4 +9,3 @@ tmdbv3api
 telethon
 telegraph[aio]
 markdown
-requests_async
