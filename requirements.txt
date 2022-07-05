@@ -8,5 +8,5 @@ sqlalchemy==1.3.23
 tmdbv3api
 telethon
 telegraph[aio]
-markdown-to-html
+markdown
 requests_async
