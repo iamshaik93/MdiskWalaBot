@@ -100,11 +100,12 @@ async def message_handler(event):
                             Button.url('Click To Check Release Date 📅',
                                     f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
             await txt.delete()
-            return await event.reply(answer, buttons=newbutton, link_preview=False)
+            result = await event.reply(answer, buttons=newbutton, link_preview=False)
+            await asyncio.sleep(Config.AUTO_DELETE_TIME)
+            await event.delete()
+            return await result.delete()
         else:
             pass
-
-
 
         answer += f"\n\n**Uploaded By @{Config.UPDATES_CHANNEL_USERNAME}**"
         answer = await replace_username(answer)
