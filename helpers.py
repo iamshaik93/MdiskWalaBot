@@ -5,10 +5,8 @@ import re
 from pyrogram import Client
 from pyrogram.types import Message
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from helpers import *
 from TeamTeleRoid.database import db
 import requests_async as requests
-import aiohttp
 
 async def replace_username(text):
 	usernames = re.findall("([@#][A-Za-z0-9_]+)", text)
