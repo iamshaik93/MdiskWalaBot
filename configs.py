@@ -67,7 +67,3 @@ Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna
 
 Want To Earn Money.🤑 /help 👈**
 """
-
-
-
-

@@ -7,8 +7,6 @@ psutil
 sqlalchemy==1.3.23
 tmdbv3api
 telethon
-requests
 telegraph[aio]
-markdown
-aiohttp
 markdown-to-html
+requests_async

@@ -1,6 +1,5 @@
 import re
 from configs import Config
-import requests
 import json
 import re
 from pyrogram import Client
@@ -8,6 +7,8 @@ from pyrogram.types import Message
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from helpers import *
 from TeamTeleRoid.database import db
+import requests_async as requests
+import aiohttp
 
 async def replace_username(text):
 	usernames = re.findall("([@#][A-Za-z0-9_]+)", text)
@@ -173,17 +174,16 @@ class AsyncIter:
 
 # ################################################### Mdisk Convertor #########################################################
         
+# async def get_mdisk(link, api=Config.MDISK_API):
 async def get_mdisk(link, api=Config.MDISK_API):
-    url = 'https://diskuploader.mypowerdisk.com/v1/tp/cp'
-    param = {'token': api, 'link': link
-             }
-    res = requests.post(url, json=param)
-
+    param = {'token':api,'link':link}
+    response = await requests.post('https://diskuploader.mypowerdisk.com/v1/tp/cp', json=param)
     try:
-        shareLink = res.json()
+        shareLink = response.json()
         link = shareLink["sharelink"]
     except Exception as e:
         print(e)
+    print(link)
     return link
 
 
