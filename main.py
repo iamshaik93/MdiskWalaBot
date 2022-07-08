@@ -33,6 +33,10 @@ async def get_user_join(id):
 
 @tbot.on(events.NewMessage(incoming=True))
 async def message_handler(event):
+    
+    if event.message.post:
+        return
+
     print("\n")
     print("Message Received: " + event.text)
     # if event.is_channel:return
