@@ -66,7 +66,8 @@ async def message_handler(event):
 
     txt = await event.reply('**Searching For "{}" 🔍**'.format(event.text))
 
-    try:
+    # try:
+    if True:
         search = []
         async for i in AsyncIter(args.split()):
             search_msg = client.iter_messages(Config.CHANNEL_ID, limit=5, search=i)
@@ -117,6 +118,7 @@ async def message_handler(event):
         answer = await replace_username(answer)
         html_content = await markdown_to_html(answer)
         html_content = await make_bold(html_content)
+        print(html_content)
         tgraph_result = await telegraph_handler(
             html=html_content,
             title=event.text,
@@ -132,13 +134,13 @@ async def message_handler(event):
         await event.delete()
         return await result.delete()
 
-    except Exception as e:
-        print(e)
-        await txt.delete()
-        result = await event.reply("Some error occurred while searching for movie")
-        await asyncio.sleep(Config.AUTO_DELETE_TIME)
-        await event.delete() 
-        return await result.delete()
+    # except Exception as e:
+    #     print(e)
+    #     await txt.delete()
+    #     result = await event.reply("Some error occurred while searching for movie")
+    #     await asyncio.sleep(Config.AUTO_DELETE_TIME)
+    #     await event.delete() 
+    #     return await result.delete()
 
 
 async def escape_url(str):
