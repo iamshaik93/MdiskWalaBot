@@ -156,6 +156,8 @@ async def make_bold(string):
 	"""
 	string = string.replace("<p>" ,"<p><strong>")
 	string = string.replace("</p>" ,"</strong></p>")
+	string = string.replace("</h1>" ,"</strong></p>")
+	string = string.replace("<h1>" ,"<p><strong>")
 	return string
 
 
