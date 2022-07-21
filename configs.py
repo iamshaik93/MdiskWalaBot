@@ -46,5 +46,5 @@ Iꜰ Yᴏᴜ Lɪᴋᴇ Mᴇ!😘
 Pʟᴇᴀꜱᴇ Sʜᴀʀᴇ Mᴇ Wɪᴛʜ Yᴏᴜʀ 
 Fʀɪᴇɴᴅꜱ Aɴᴅ Fᴀᴍɪʟʏ.👨‍👨‍👧
 
-Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ {OWNER_USERNAME}
+Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna
 """
