@@ -28,15 +28,14 @@ async def total_users(_, event: Message):
 @Client.on_message( filters.command("start") & filters.private)
 async def start_handler(_,event: Message):
     await event.reply_photo(
-        photo='https://telegra.ph/file/3ff4dce771db4c22b0160.jpg',
+        photo='https://telegra.ph/file/3dc2573762d700b63137f.jpg',
         caption=Config.START_MSG.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
-            InlineKeyboardButton('Our Channel', url=f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}'),
-            InlineKeyboardButton('Our Group', url=f'https://t.me/{Config.GROUP_USERNAME}')],
+            [InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix"),
+             InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")],
 
-            [InlineKeyboardButton('About', callback_data='About_msg'),
-            InlineKeyboardButton('Help', callback_data='Help_msg')
-           ]
+             [InlineKeyboardButton("About", callback_data="About_msg"),
+             InlineKeyboardButton("Help", callback_data="Help_msg")
+             ]
         ])
     )
-
