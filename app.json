@@ -39,6 +39,13 @@
         },
         "OWNER_USERNAME": {
             "description": "Bot Owner User Name"
+            "required": True
+        },
+        "HOME_TEXT": {
+            "description": "Good Bye Msg"
+        },
+        "START_MSG": {
+            "description": "Type Anything You Want"
         },
         "DATABASE_URL": {
             "description": "MongoDB Database URI for Saving UserID for Broadcast."
@@ -67,8 +74,7 @@
             "description": "Auto deletion time in seconds",
             "required": false,
             "value": "300"
-        }
-        ,
+        },
         "FORCE_SUB":{
             "description": "Set to true to force a new subscription",
             "required": false,
