@@ -127,7 +127,7 @@ async def message_handler(event):
         )
         message = f'**Click Here 👇 For "{event.text}"**\n\n[🍿🎬 {str(event.text).upper()}\n🍿🎬 {str("Click me for results").upper()}]({tgraph_result})'
         buttons = [
-                [InlineKeyboardButton("Help", url="https://t.me/RoyalKrrishna")]
+                [InlineKeyboardButton("Backup Channel", url="https://t.me/{BACKUP_CHANNEL}")]
             ]
 
         await txt.delete()
