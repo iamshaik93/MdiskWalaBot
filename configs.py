@@ -15,6 +15,7 @@ class Config(object):
     BACKUP_CHANNEL = os.environ.get("BACKUP_CHANNEL")
     GROUP_USERNAME = os.environ.get("GROUP_USERNAME")
     START_MSG = os.environ.get("START_MSG")
+    START_PHOTO = os.environ.get("START_PHOTO")
     HOME_TEXT = os.environ.get("HOME_TEXT")
     UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", None)
     DATABASE_URL = os.environ.get("DATABASE_URL", "")
