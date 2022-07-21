@@ -3,8 +3,7 @@
 from os import link
 from telethon import Button
 from configs import Config
-from pyrogram import Client, idle
-from pyrogram.types import InlineKeyboardButton
+from pyrogram import Client, idle, InlineKeyboardButton
 import asyncio
 from telethon import TelegramClient
 from telethon.sessions import StringSession
