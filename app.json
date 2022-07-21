@@ -51,6 +51,9 @@
         "START_MSG": {
             "description": "Type Anything You Want"
         },
+        "GROUP_USERNAME": {
+            "description": "Type Anything You Want"
+        },
         "DATABASE_URL": {
             "description": "MongoDB Database URI for Saving UserID for Broadcast."
         },
