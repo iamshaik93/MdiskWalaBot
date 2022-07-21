@@ -2,7 +2,7 @@
 
 from os import link
 from telethon import Button
-from configs import Config
+from configs import Config, UPDATES_CHANNEL_USERNAME
 from pyrogram import Client, idle
 import asyncio
 from telethon import TelegramClient
