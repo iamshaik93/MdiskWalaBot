@@ -125,7 +125,7 @@ async def message_handler(event):
             author=Config.BOT_USERNAME
         )
         message = f'**Click Here 👇 For "{event.text}"**\n\n[🍿🎬 {str(event.text).upper()}\n🍿🎬 {str("Click me for results").upper()}]({tgraph_result})'
-        button =  [Button.url("Backup Channel", url="https://t.me/{OWNER_USERNAME}")]
+        button =  [Button.url("Backup Channel", url="https://telegram.me/{BACKUP_CHANNEL}")]
 
         await txt.delete()
         result = await event.reply(message, buttons=button, link_preview=False)
