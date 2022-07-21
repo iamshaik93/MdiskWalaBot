@@ -38,5 +38,5 @@ class Config(object):
 
     ABOUT_HELP_TEXT = """
 <b>
-👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a></b>
+👨‍💻 Developer : <a href='https://t.me/{OWNER_USERNAME}'>Owener</a></b>
 """
