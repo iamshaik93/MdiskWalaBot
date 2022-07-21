@@ -3,7 +3,7 @@
 from os import link
 from telethon import Button
 from configs import Config
-from pyrogram import Client, idle, InlineKeyboardButton
+from pyrogram import Client, idle
 import asyncio
 from telethon import TelegramClient
 from telethon.sessions import StringSession
@@ -125,9 +125,7 @@ async def message_handler(event):
             author=Config.BOT_USERNAME
         )
         message = f'**Click Here 👇 For "{event.text}"**\n\n[🍿🎬 {str(event.text).upper()}\n🍿🎬 {str("Click me for results").upper()}]({tgraph_result})'
-        button = [
-                [InlineKeyboardButton("Backup Channel", url="https://t.me/{BACKUP_CHANNEL}")]
-            ]
+        button = [Button.url("Backup Channel", url="https://t.me/{BACKUP_CHANNEL}")]
 
         await txt.delete()
         result = await event.reply(message, buttons=button, link_preview=False)
