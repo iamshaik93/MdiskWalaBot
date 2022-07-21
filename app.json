@@ -39,11 +39,9 @@
         },
         "OWNER_USERNAME": {
             "description": "Bot Owner User Name Without @"
-            "required": True
         },
         "BACKUP_CHANNEL": {
             "description": "Bot Backup Channel Without @"
-            "required": True
         },
         "HOME_TEXT": {
             "description": "Good Bye Msg"
