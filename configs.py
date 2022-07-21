@@ -33,7 +33,7 @@ class Config(object):
 
 📡 Server: <a href='https://heroku.com'>Heroku</a>
 
-👨‍💻 Created By: <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a></b>
+👨‍💻 Created By: <a href='https://t.me/{OWNER_USERNAME}'>Owner</a></b>
 """
 
     ABOUT_HELP_TEXT = """
