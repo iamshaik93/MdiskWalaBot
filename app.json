@@ -37,6 +37,9 @@
         "BOT_OWNER": {
             "description": "Bot Owner UserID"
         },
+        "OWNER_USERNAME": {
+            "description": "Bot Owner User Name"
+        },
         "DATABASE_URL": {
             "description": "MongoDB Database URI for Saving UserID for Broadcast."
         },
