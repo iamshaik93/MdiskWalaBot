@@ -38,11 +38,11 @@
             "description": "Bot Owner UserID"
         },
         "OWNER_USERNAME": {
-            "description": "Bot Owner User Name"
+            "description": "Bot Owner User Name Without @"
             "required": True
         },
         "BACKUP_CHANNEL": {
-            "description": "Bot Backup Channel @"
+            "description": "Bot Backup Channel Without @"
             "required": True
         },
         "HOME_TEXT": {
@@ -50,6 +50,9 @@
         },
         "START_MSG": {
             "description": "Type Anything You Want"
+        },
+        "START_PHOTO": {
+            "description": "Add Your Photo Link"
         },
         "GROUP_USERNAME": {
             "description": "Type Anything You Want"
