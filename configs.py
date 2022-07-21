@@ -31,9 +31,7 @@ class Config(object):
 
 📚 Library: <a href='https://docs.telethon.org'>Telethon</a>
 
-📡 Server: <a href='https://heroku.com'>Heroku</a>
-
-👨‍💻 Created By: <a href='https://t.me/{OWNER_USERNAME}'>Owner</a></b>
+📡 Server: <a href='https://heroku.com'>Heroku</a></b>
 """
 
     ABOUT_HELP_TEXT = """
