@@ -126,7 +126,7 @@ async def message_handler(event):
             author=Config.BOT_USERNAME
         )
         message = f'**Click Here 👇 For "{event.text}"**\n\n[🍿🎬 {str(event.text).upper()}\n🍿🎬 {str("Click me for results").upper()}]({tgraph_result})'
-        buttons = [
+        button = [
                 [InlineKeyboardButton("Backup Channel", url="https://t.me/{BACKUP_CHANNEL}")]
             ]
 
