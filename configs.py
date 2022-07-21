@@ -40,12 +40,3 @@ class Config(object):
 <b>
 👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a></b>
 """
-
-    HOME_TEXT = """
-Iꜰ Yᴏᴜ Lɪᴋᴇ Mᴇ!😘
-
-Pʟᴇᴀꜱᴇ Sʜᴀʀᴇ Mᴇ Wɪᴛʜ Yᴏᴜʀ 
-Fʀɪᴇɴᴅꜱ Aɴᴅ Fᴀᴍɪʟʏ.👨‍👨‍👧
-
-Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna
-"""
