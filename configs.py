@@ -12,6 +12,7 @@ class Config(object):
     BOT_USERNAME = os.environ.get("BOT_USERNAME")
     BOT_OWNER = int(os.environ.get("BOT_OWNER"))
     OWNER_USERNAME = os.environ.get("OWNER_USERNAME")
+    BACKUP_CHANNEL = os.environ.get("BACKUP_CHANNEL")
     START_MSG = os.environ.get("START_MSG")
     HOME_TEXT = os.environ.get("HOME_TEXT")
     UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", None)
