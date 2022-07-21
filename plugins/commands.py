@@ -1,5 +1,5 @@
 
-from configs import START_MSG, ABOUT_HELP_TEXT, BOT_OWNER
+from config import START_MSG, ABOUT_HELP_TEXT, BOT_OWNER
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from TeamTeleRoid.database import db
