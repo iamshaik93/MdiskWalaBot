@@ -11,6 +11,7 @@ class Config(object):
     CHANNEL_ID = int(os.environ.get("CHANNEL_ID", -100))
     BOT_USERNAME = os.environ.get("BOT_USERNAME")
     BOT_OWNER = int(os.environ.get("BOT_OWNER"))
+    OWNER_USERNAME = int(os.environ.get("OWNER_USERNAME"))
     UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", None)
     DATABASE_URL = os.environ.get("DATABASE_URL", "")
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", ""))
@@ -44,7 +45,7 @@ Iꜰ Yᴏᴜ Lɪᴋᴇ Mᴇ!😘
 Pʟᴇᴀꜱᴇ Sʜᴀʀᴇ Mᴇ Wɪᴛʜ Yᴏᴜʀ 
 Fʀɪᴇɴᴅꜱ Aɴᴅ Fᴀᴍɪʟʏ.👨‍👨‍👧
 
-Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna
+Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ {OWNER_USERNAME}
 """
 
     START_MSG = """
@@ -54,5 +55,5 @@ I'ᴍ Mᴅɪꜱᴋ Sᴇᴀʀᴄʜ Rᴏʙᴏᴛ.🤖
 
 I Cᴀɴ Sᴇᴀʀᴄʜ Mᴏᴠɪᴇꜱ Fᴏʀ Yᴏᴜ.🔍
 
-Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ @RoyalKrrishna**
+Mᴀᴅᴇ Wɪᴛʜ ❤ Bʏ {OWNER_USERNAME}**
 """
