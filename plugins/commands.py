@@ -11,7 +11,7 @@ async def help_handler(_, event: Message):
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton('Our Channel', url=f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}'),
              InlineKeyboardButton('Our Group', url=f'https://t.me/{Config.GROUP_USERNAME}'),
-             InlineKeyboardButton('About', callback_data='About_msg')]
+             InlineKeyboardButton("About", callback_data="About_msg")]
         ])
     )
 
@@ -34,8 +34,8 @@ async def start_handler(_,event: Message):
             [InlineKeyboardButton('Our Channel', url=f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}'),
              InlineKeyboardButton('Our Group', url=f'https://t.me/{Config.GROUP_USERNAME}')],
 
-             [InlineKeyboardButton('About', callback_data='About_msg'),
-             InlineKeyboardButton('Help', callback_data='Help_msg')
+             [InlineKeyboardButton("About", callback_data="About_msg"),
+             InlineKeyboardButton("Help", callback_data="Help_msg")
              ]
         ])
     )
