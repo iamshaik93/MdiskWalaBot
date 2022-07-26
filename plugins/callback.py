@@ -32,7 +32,7 @@ async def button(bot, cmd: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton('About', callback_data='About_msg'),
+                        InlineKeyboardButton("About", callback_data="About_msg"),
                         InlineKeyboardButton('Our Channel', url=f'Config.UPDATES_CHANNEL_USERNAME')
                     ], 
                                         [
