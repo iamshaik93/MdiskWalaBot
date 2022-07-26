@@ -14,12 +14,12 @@ async def button(bot, cmd: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("Our Channel", url="Config.UPDATES_CHANNEL_USERNAME"),
-                        InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")
+                        InlineKeyboardButton('Our Channel', url=f'Config.UPDATES_CHANNEL_USERNAME'),
+                        InlineKeyboardButton('Our Group', url=f'https://t.me/iPopcornMovieGroup')
                     ],
                     [
-                        InlineKeyboardButton("Developer", url="https://t.me/RoyalKrrishna"),
-                        InlineKeyboardButton("Home", callback_data="gohome")
+                        InlineKeyboardButton('Developer', url=f'https://t.me/RoyalKrrishna'),
+                        InlineKeyboardButton('Home', callback_data='gohome')
                     ]
                 ]
             ),
@@ -32,12 +32,12 @@ async def button(bot, cmd: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("About", callback_data="About_msg"),
-                        InlineKeyboardButton("Our Channel", url="Config.UPDATES_CHANNEL_USERNAME")
+                        InlineKeyboardButton('About', callback_data="About_msg"),
+                        InlineKeyboardButton('Our Channel', url=f'Config.UPDATES_CHANNEL_USERNAME')
                     ], 
                                         [
-                        InlineKeyboardButton("Owner", url="https://t.me/RoyalKrrishna"),
-                        InlineKeyboardButton("Home", callback_data="gohome")
+                        InlineKeyboardButton('Owner', url='https://t.me/RoyalKrrishna'),
+                        InlineKeyboardButton('Home', callback_data='gohome')
                     ]
                 ]
             ),
@@ -50,12 +50,12 @@ async def button(bot, cmd: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                                         [
-                        InlineKeyboardButton("Help", callback_data="Help_msg"),
-                        InlineKeyboardButton("About", callback_data="About_msg")
+                        InlineKeyboardButton('Help', callback_data="Help_msg"),
+                        InlineKeyboardButton('About', callback_data="About_msg")
                     ],
                     [
-                        InlineKeyboardButton("Support", url="https://t.me/RoyalKrrishna"),
-                        InlineKeyboardButton("Channel", url="Config.UPDATES_CHANNEL_USERNAME")
+                        InlineKeyboardButton('Support', url='https://t.me/RoyalKrrishna'),
+                        InlineKeyboardButton('Channel', url=f'Config.UPDATES_CHANNEL_USERNAME')
                     ]
                 ]
             ),
