@@ -9,8 +9,8 @@ from TeamTeleRoid.database import db
 async def help_handler(_, event: Message):
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("Our Channel", url=f"https://t.me/{Config.UPDATES_CHANNEL_USERNAME}"),
-             InlineKeyboardButton("Our Group", url=f"https://t.me/{Config.GROUP_USERNAME}"),
+            [InlineKeyboardButton('Our Channel', url=f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}'),
+             InlineKeyboardButton('Our Group', url=f'https://t.me/{Config.GROUP_USERNAME}'),
              InlineKeyboardButton("About", callback_data="About_msg")]
         ])
     )
@@ -31,8 +31,8 @@ async def start_handler(_,event: Message):
         photo=Config.START_PHOTO,
         caption=Config.START_MSG.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("Our Channel", url=f"https://t.me/{Config.UPDATES_CHANNEL_USERNAME}"),
-             InlineKeyboardButton("Our Group", url=f"https://t.me/{Config.GROUP_USERNAME}")],
+            [InlineKeyboardButton('Our Channel', url=f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}'),
+             InlineKeyboardButton('Our Group', url=f'https://t.me/{Config.GROUP_USERNAME}')],
 
              [InlineKeyboardButton("About", callback_data="About_msg"),
              InlineKeyboardButton("Help", callback_data="Help_msg")
