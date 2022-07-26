@@ -19,7 +19,7 @@ async def button(bot, cmd: CallbackQuery):
                     ],
                     [
                         InlineKeyboardButton('Developer', url=f'https://t.me/RoyalKrrishna'),
-                        InlineKeyboardButton('Home', callback_data='gohome')
+                        InlineKeyboardButton("Home", callback_data="gohome")
                     ]
                 ]
             ),
@@ -37,7 +37,7 @@ async def button(bot, cmd: CallbackQuery):
                     ], 
                                         [
                         InlineKeyboardButton('Owner', url='https://t.me/RoyalKrrishna'),
-                        InlineKeyboardButton('Home', callback_data='gohome')
+                        InlineKeyboardButton("Home", callback_data="gohome")
                     ]
                 ]
             ),
@@ -50,8 +50,8 @@ async def button(bot, cmd: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                                         [
-                        InlineKeyboardButton('Help', callback_data='Help_msg'),
-                        InlineKeyboardButton('About', callback_data='About_msg')
+                        InlineKeyboardButton("Help", callback_data="Help_msg"),
+                        InlineKeyboardButton("About", callback_data="About_msg")
                     ],
                     [
                         InlineKeyboardButton('Support', url='https://t.me/RoyalKrrishna'),
