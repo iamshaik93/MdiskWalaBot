@@ -32,7 +32,7 @@ async def button(bot, cmd: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton('About', callback_data="About_msg"),
+                        InlineKeyboardButton('About', callback_data='About_msg'),
                         InlineKeyboardButton('Our Channel', url=f'Config.UPDATES_CHANNEL_USERNAME')
                     ], 
                                         [
@@ -50,8 +50,8 @@ async def button(bot, cmd: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                                         [
-                        InlineKeyboardButton('Help', callback_data="Help_msg"),
-                        InlineKeyboardButton('About', callback_data="About_msg")
+                        InlineKeyboardButton('Help', callback_data='Help_msg'),
+                        InlineKeyboardButton('About', callback_data='About_msg')
                     ],
                     [
                         InlineKeyboardButton('Support', url='https://t.me/RoyalKrrishna'),
