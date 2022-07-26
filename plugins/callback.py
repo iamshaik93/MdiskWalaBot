@@ -15,10 +15,10 @@ async def button(bot, cmd: CallbackQuery):
                 [
                     [
                         InlineKeyboardButton('Our Channel', url=f'Config.UPDATES_CHANNEL_USERNAME'),
-                        InlineKeyboardButton('Our Group', url=f'https://t.me/iPopcornMovieGroup')
+                        InlineKeyboardButton('Our Group', url=https://t.me/iPopcornMovieGroup')
                     ],
                     [
-                        InlineKeyboardButton('Developer', url=f'https://t.me/RoyalKrrishna'),
+                        InlineKeyboardButton('Developer', url='https://t.me/RoyalKrrishna'),
                         InlineKeyboardButton("Home", callback_data="gohome")
                     ]
                 ]
