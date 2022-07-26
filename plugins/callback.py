@@ -14,7 +14,7 @@ async def button(bot, cmd: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix"),
+                        InlineKeyboardButton("Our Channel", url="Config.UPDATES_CHANNEL_USERNAME"),
                         InlineKeyboardButton("Our Group", url="https://t.me/iPopcornMovieGroup")
                     ],
                     [
@@ -33,7 +33,7 @@ async def button(bot, cmd: CallbackQuery):
                 [
                     [
                         InlineKeyboardButton("About", callback_data="About_msg"),
-                        InlineKeyboardButton("Our Channel", url="https://t.me/iPopcornFlix")
+                        InlineKeyboardButton("Our Channel", url="Config.UPDATES_CHANNEL_USERNAME")
                     ], 
                                         [
                         InlineKeyboardButton("Owner", url="https://t.me/RoyalKrrishna"),
@@ -55,7 +55,7 @@ async def button(bot, cmd: CallbackQuery):
                     ],
                     [
                         InlineKeyboardButton("Support", url="https://t.me/RoyalKrrishna"),
-                        InlineKeyboardButton("Channel", url="https://t.me/iPopcornFlix")
+                        InlineKeyboardButton("Channel", url="Config.UPDATES_CHANNEL_USERNAME")
                     ]
                 ]
             ),
