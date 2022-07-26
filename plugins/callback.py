@@ -18,7 +18,7 @@ async def button(bot, cmd: CallbackQuery):
                         InlineKeyboardButton('Our Group', url=f'https://t.me/{Config.GROUP_USERNAME}')
                     ],
                     [
-                        InlineKeyboardButton("Developer", url="https://t.me/RoyalKrrishna"),
+                        InlineKeyboardButton('Developer', url=f'https://t.me/{Config.OWNER_USERNAME}'),
                         InlineKeyboardButton("Home", callback_data="gohome")
                     ]
                 ]
@@ -36,7 +36,7 @@ async def button(bot, cmd: CallbackQuery):
                         InlineKeyboardButton('Our Channel', url=f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}')
                     ], 
                                         [
-                        InlineKeyboardButton("Owner", url="https://t.me/RoyalKrrishna"),
+                        InlineKeyboardButton('Owner', url=f'https://t.me/{Config.OWNER_USERNAME}'),
                         InlineKeyboardButton("Home", callback_data="gohome")
                     ]
                 ]
@@ -54,7 +54,7 @@ async def button(bot, cmd: CallbackQuery):
                         InlineKeyboardButton("About", callback_data="About_msg")
                     ],
                     [
-                        InlineKeyboardButton("Support", url="https://t.me/RoyalKrrishna"),
+                        InlineKeyboardButton('Support', url=f'https://t.me/{Config.OWNER_USERNAME}'),
                         InlineKeyboardButton('Channel', url=f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}')
                     ]
                 ]
