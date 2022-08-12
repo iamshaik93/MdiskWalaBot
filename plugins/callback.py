@@ -65,22 +65,24 @@ async def request_access_handler(c:Client,query: CallbackQuery):
     user = await db.get_group(group_id)
     if user["has_access"] and await db.is_group_verified(group_id):
         return await query.message.reply("You already have access to this Bot")
-    else:
+    else: 
         REPLY_MARKUP = InlineKeyboardMarkup([
-    [
-        InlineKeyboardButton('Allow', callback_data=f'give_access#{query.message.chat.id}#{query.from_user.id}'),
-        InlineKeyboardButton('Deny', callback_data=f'deny_access#{query.message.chat.id}#{query.from_user.id}'),
-    ],
-    [
-        
-        InlineKeyboardButton('Close', callback_data=f'delete'),
-    ],
+            [
+                InlineKeyboardButton('Allow', callback_data=f'give_access#{query.message.chat.id}#{query.from_user.id}'),
+                InlineKeyboardButton('Deny', callback_data=f'deny_access#{query.message.chat.id}#{query.from_user.id}'),
+            ],
+            [
+                
+                InlineKeyboardButton('Close', callback_data=f'delete'),
+            ],
 
-])      
+        ])      
 
         await c.send_message(Config.LOG_CHANNEL, f"""
 #NewRequest
-Group ID: {group_id}""", reply_markup=REPLY_MARKUP)
+Group ID: {group_id}
+Give Access: `/give_access {group_id} no_of_days`
+Deny Access: `/deny_access `{group_id}`""")
 
         await query.edit_message_text("Request has been sent to Admin. You will be notified when Admin accepts your request")
 

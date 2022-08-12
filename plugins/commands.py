@@ -1,20 +1,8 @@
-
+from datetime import datetime
 from configs import Config
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from TeamTeleRoid.database import db
-
-
-@Client.on_callback_query(filters.command("bangrp") & filters.private)
-async def dbdeny_access_cmd_handler(c:Client,query: Message):
-    print(True)
-    try:
-        group_id = int(query.command[1])
-        user = await db.get_group(str(group_id).replace("-100", ""))
-        await db.update_group(group_id, {"has_access": False})
-        await query.reply_text("Group has been banned")
-    except Exception as e:
-        print(e)
 
 
 @Client.on_message(filters.command("help") & filters.private)

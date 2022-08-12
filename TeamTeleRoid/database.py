@@ -119,6 +119,7 @@ class Database:
                 "has_access": False,
                 "db_channel": 0,
                 "last_verified": datetime.datetime(2020, 5, 17),
+                "verification_time": Config.VERIFIED_TIME
             }
             self.groups.insert_one(res)
 
