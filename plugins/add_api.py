@@ -24,7 +24,6 @@ async def group_hanler(c: Client, m: Message):
     if not user_id in VERIFY.get(str(chat_id)): # Checks if user is admin of the chat
         return
 
-
     if len(m.command) == 1:
         return await m.reply('Command Usage: /add_api your api key')
     if not await db.get_group(chat_id):

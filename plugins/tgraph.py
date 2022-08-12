@@ -11,7 +11,6 @@ async def telegraph_handler(title, html, author):
         title=title,
         html_content=html,
         author_name=author
-
     )
     return response['url']
 

@@ -107,11 +107,43 @@ class Database:
         return api
 
     async def get_group(self, group_id):
-        api_keys = str(group_id)
-        api_keys = api_keys.replace('-100', '')
-        api_keys = api_keys.replace('-', '')
-        api = self.groups.find_one({'group_id': int(api_keys)})
-        return api
+        group_id = str(group_id)
+        group_id = group_id.replace('-100', '')
+        group_id = group_id.replace('-', '')
+
+        id = self.groups.find_one({'group_id': int(group_id)})
+
+        if not id:
+            res = {
+                "group_id": int(group_id),
+                "has_access": False,
+                "db_channel": 0,
+                "last_verified": datetime.datetime(2020, 5, 17),
+            }
+            self.groups.insert_one(res)
+
+            id = self.groups.find_one({"group_id": group_id})
+        return id
+
+    async def update_group(self, group_id, value):
+        group_id = int(group_id)
+        await self.get_group(group_id)
+        myquery = {"group_id": group_id}
+        newvalues = { "$set": value }
+        self.groups.update_one(myquery, newvalues)
+
+    async def is_group_verified(self, id):
+        user = await self.get_group(id)
+        try:
+            pastDate = user["last_verified"]
+        except:
+            user = await self.get_group(id)
+            pastDate = user["last_verified"]
+
+        if (datetime.datetime.now() - pastDate).days > Config.VERIFIED_TIME:
+            return False
+        else:
+            return True
 
     async def update_user_api(self, group_id, api):
         api_keys = str(group_id)
@@ -190,5 +222,6 @@ class Database:
             "count": int(channels_count),
             "channels":channels
         }
+    
 
 db = Database(Config.DATABASE_URL, Config.BOT_USERNAME)

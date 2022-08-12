@@ -37,10 +37,11 @@ async def message_handler(event):
     if event.message.post:
         return
 
-    print("\n")
-    print("Message Received: " + event.text)
     # if event.is_channel:return
     if event.text.startswith("/"):return
+
+    print("\n")
+    print("Message Received: " + event.text)
 
     # Force Subscription
     if  not await get_user_join(event.sender_id):
@@ -66,80 +67,90 @@ async def message_handler(event):
 
     txt = await event.reply('**Searching For "{}" 🔍**'.format(event.text))
 
-    try:
+    # try:
 
-        search = []
-        async for i in AsyncIter(args.split()):
-            search_msg = client.iter_messages(Config.CHANNEL_ID, limit=5, search=i)
-            search.append(search_msg)
+    search = []
+    if event.is_group or event.is_channel:
+        group_info = await db.get_group(str(event.chat_id).replace("-100", ""))
 
-        username = Config.UPDATES_CHANNEL_USERNAME
-        answer = f'**Join** [@{username}](https://telegram.me/{username}) \n\n'
+        if group_info["has_access"] and group_info["db_channel"]:
+            CHANNEL_ID = group_info["db_channel"]
+        else:
+            CHANNEL_ID = Config.CHANNEL_ID
+    else:
+        CHANNEL_ID = Config.CHANNEL_ID
 
-        c = 0
 
-        async for msg_list in AsyncIter(search):
-            async for msg in msg_list:
-                c += 1
-                f_text = msg.text.replace("*", "")
+    async for i in AsyncIter(args.split()):
+        search_msg = client.iter_messages(CHANNEL_ID, limit=5, search=i)
+        search.append(search_msg)
 
-#                 if event.is_group or event.is_channel:
-#                     f_text = await group_link_convertor(event.chat_id, f_text)
+    username = Config.UPDATES_CHANNEL_USERNAME
+    answer = f'**Join** [@{username}](https://telegram.me/{username}) \n\n'
 
-                f_text = await link_to_hyperlink(f_text)
-                answer += f'\n\n\n✅ PAGE {c}:\n\n━━━━━━━━━\n\n' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[
-                    -1] + "\n\n"
-                
-            # break
-        finalsearch = []
-        async for msg in AsyncIter(search):
-            finalsearch.append(msg)
+    c = 0
 
-        if c <= 0:
-            answer = f'''**No Results Found For {event.text}**
+    async for msg_list in AsyncIter(search):
+        async for msg in msg_list:
+            c += 1
+            f_text = msg.text.replace("*", "")
+
+
+
+            f_text = await link_to_hyperlink(f_text)
+            answer += f'\n\n\n✅ PAGE {c}:\n\n━━━━━━━━━\n\n' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[
+                -1] + "\n\n"
+            
+        # break
+    finalsearch = []
+    async for msg in AsyncIter(search):
+        finalsearch.append(msg)
+
+    if c <= 0:
+        answer = f'''**No Results Found For {event.text}**
 
 **Type Only Movie Name 💬**
 **Check Spelling On** [Google](http://www.google.com/search?q={event.text.replace(' ', '%20')}%20Movie) 🔍
 '''
 
-            newbutton = [Button.url('Click To Check Spelling ✅',
-                                    f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie')], [
-                            Button.url('Click To Check Release Date 📅',
-                                    f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
-            await txt.delete()
-            result = await event.reply(answer, buttons=newbutton, link_preview=False)
-            await asyncio.sleep(Config.AUTO_DELETE_TIME)
-            await event.delete()
-            return await result.delete()
-        else:
-            pass
-
-        answer += f"\n\n**Uploaded By @{Config.UPDATES_CHANNEL_USERNAME}**"
-        answer = await replace_username(answer)
-        html_content = await markdown_to_html(answer)
-        html_content = await make_bold(html_content)
-      
-        tgraph_result = await telegraph_handler(
-            html=html_content,
-            title=event.text,
-            author=Config.BOT_USERNAME
-        )
-        message = f'**Click Here 👇 For "{event.text}"**\n\n[🍿🎬 {str(event.text).upper()}\n🍿🎬 {str("Click me for results").upper()}]({tgraph_result})'
-        button=Button.url('Backup Channel', f'https://t.me/{Config.BACKUP_CHANNEL}')
-
+        newbutton = [Button.url('Click To Check Spelling ✅',
+                                f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie')], [
+                        Button.url('Click To Check Release Date 📅',
+                                f'http://www.google.com/search?q={event.text.replace(" ", "%20")}%20Movie%20Release%20Date')]
         await txt.delete()
-        result = await event.reply(message, buttons=button, link_preview=False)
+        result = await event.reply(answer, buttons=newbutton, link_preview=False)
         await asyncio.sleep(Config.AUTO_DELETE_TIME)
         await event.delete()
         return await result.delete()
+    else:
+        pass
 
-    except Exception as e:
-        print(e)
-        await txt.delete()
-        result = await event.reply("Some error occurred while searching for movie")
-        await asyncio.sleep(Config.AUTO_DELETE_TIME)
-        await event.delete() 
-        return await result.delete()
+    answer += f"\n\n**Uploaded By @{Config.UPDATES_CHANNEL_USERNAME}**"
+    answer = await replace_username(answer)
+    html_content = await markdown_to_html(answer)
+    html_content = await make_bold(html_content)
+    
+    tgraph_result = await telegraph_handler(
+        html=html_content,
+        title=event.text,
+        author=Config.BOT_USERNAME
+    )
+    message = f'**Click Here 👇 For "{event.text}"**\n\n[🍿🎬 {str(event.text).upper()}\n🍿🎬 {str("Click me for results").upper()}]({tgraph_result})'
+    button=Button.url('Backup Channel', f'https://t.me/{Config.BACKUP_CHANNEL}')
+
+    await txt.delete()
+    result = await event.reply(message, buttons=button, link_preview=False)
+    await asyncio.sleep(Config.AUTO_DELETE_TIME)
+    await event.delete()
+    return await result.delete()
+
+    # except Exception as e:
+    #     print(e)
+    #     await txt.delete()
+    #     result = await event.reply("Some error occurred while searching for movie")
+    #     await asyncio.sleep(Config.AUTO_DELETE_TIME)
+    #     await event.delete() 
+    #     return await result.delete()
 
 
 async def escape_url(str):
