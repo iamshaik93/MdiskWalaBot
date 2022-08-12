@@ -141,7 +141,7 @@ class Database:
             user = await self.get_group(id)
             pastDate = user["last_verified"]
 
-        if (datetime.datetime.now() - pastDate).days > Config.VERIFIED_TIME:
+        if (datetime.datetime.now() - pastDate).days > user["verification_time"] if  user["verification_time"] else Config.VERIFIED_TIME:
             return False
         else:
             return True
