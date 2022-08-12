@@ -44,5 +44,21 @@ class Config(object):
 
     ABOUT_HELP_TEXT = """
 <b>
-👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>Owener</a></b>
+Admin Commands 👥
+
+/total_users
+/broadcast
+/connect
+/disconnect
+/add_api
+/remove_api
+/allow
+/disallow
+/channels
+/request
+/addb 
+/deny_access
+/give_access
+
+👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a></b>
 """
