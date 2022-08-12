@@ -43,7 +43,9 @@ class Config(object):
 """
 
     ABOUT_HELP_TEXT = """
-<b>Commands Only For Admin 👥</b>
+<b>👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a>
+
+Commands For Admin</b>
 
 /total_users
 /broadcast
@@ -58,6 +60,4 @@ class Config(object):
 /addb 
 /deny_access
 /give_access
-
-<b>👨‍💻 Developer : <a href='https://t.me/RoyalKrrishna'>Royal Krrishna</a></b>
 """
