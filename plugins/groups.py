@@ -1,5 +1,3 @@
-
-
 from datetime import datetime
 from configs import Config
 from pyrogram import Client, filters
@@ -13,7 +11,7 @@ async def dbdeny_access_cmd_handler(c:Client,query: Message):
     try:
         group_id = int(query.command[1])
         user = await db.get_group(str(group_id).replace("-100", ""))
-        await db.update_group(str(group_id).replace("-100", ""), {"has_access": False})
+        await db.update_group(str(group_id).replace("-100", ""), {"has_access": False, "last_verified":datetime(2020, 5, 17)})
         await query.reply_text("Group has been banned")
     except Exception as e:
         print(e)

@@ -82,7 +82,7 @@ async def request_access_handler(c:Client,query: CallbackQuery):
 #NewRequest
 Group ID: {group_id}
 Give Access: `/give_access {group_id} no_of_days`
-Deny Access: `/deny_access `{group_id}`""")
+Deny Access: `/deny_access `{group_id}`""", reply_markup=REPLY_MARKUP)
 
         await query.edit_message_text("Request has been sent to Admin. You will be notified when Admin accepts your request")
 

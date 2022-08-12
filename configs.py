@@ -1,6 +1,10 @@
 # (c) @RoyalKrrishna
 
 import os
+# from dotenv import load_dotenv
+
+# load_dotenv()
+
 
 class Config(object):
     API_ID = int(os.getenv("API_ID", 12345))
