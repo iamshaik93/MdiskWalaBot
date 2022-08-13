@@ -31,8 +31,9 @@ async def start_handler(_,event: Message):
         photo=Config.START_PHOTO,
         caption=Config.START_MSG.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton('Our Channel', url=f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}'),
-             InlineKeyboardButton('Our Group', url=f'https://t.me/{Config.GROUP_USERNAME}')],
+            [
+            InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            ],
 
              [InlineKeyboardButton("About", callback_data="About_msg"),
              InlineKeyboardButton("Help", callback_data="Help_msg")
