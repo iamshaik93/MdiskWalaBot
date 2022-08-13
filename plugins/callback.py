@@ -97,11 +97,10 @@ async def button(bot, cmd: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton('Our Channel', url=f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}'),
-                        InlineKeyboardButton('Our Group', url=f'https://t.me/{Config.GROUP_USERNAME}')
-                    ],
+            InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{Config.BOT_USERNAME}?startgroup=true')
+            ],
                     [
-                        InlineKeyboardButton('Developer', url=f'https://t.me/{Config.OWNER_USERNAME}'),
+                        InlineKeyboardButton("About", callback_data="About_msg"),
                         InlineKeyboardButton("Home", callback_data="gohome")
                     ]
                 ]
@@ -115,11 +114,10 @@ async def button(bot, cmd: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("About", callback_data="About_msg"),
-                        InlineKeyboardButton('Our Channel', url=f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}')
-                    ], 
+            InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{Config.BOT_USERNAME}?startgroup=true')
+            ], 
                                         [
-                        InlineKeyboardButton('Owner', url=f'https://t.me/{Config.OWNER_USERNAME}'),
+                        InlineKeyboardButton("About", callback_data="About_msg"),
                         InlineKeyboardButton("Home", callback_data="gohome")
                     ]
                 ]
@@ -132,13 +130,12 @@ async def button(bot, cmd: CallbackQuery):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                                        [
-                        InlineKeyboardButton("Help", callback_data="Help_msg"),
-                        InlineKeyboardButton("About", callback_data="About_msg")
-                    ],
+                                       [
+            InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{Config.BOT_USERNAME}?startgroup=true')
+            ],
                     [
-                        InlineKeyboardButton('Support', url=f'https://t.me/{Config.OWNER_USERNAME}'),
-                        InlineKeyboardButton('Channel', url=f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}')
+                        InlineKeyboardButton("About", callback_data="About_msg"),
+                        InlineKeyboardButton("Home", callback_data="gohome")
                     ]
                 ]
             ),
