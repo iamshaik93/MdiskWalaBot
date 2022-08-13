@@ -13,7 +13,8 @@ async def help_handler(_, event: Message):
             InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{Config.BOT_USERNAME}?startgroup=true')
             ]
              InlineKeyboardButton("About", url=f'https://t.me/{Config.ABOUT_TEXT}')]
-        ]))
+        ])
+                          )
 
 @Client.on_message(filters.command("total_users") & filters.private &  filters.chat(Config.BOT_OWNER))
 async def total_users(_, event: Message):
