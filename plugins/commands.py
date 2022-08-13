@@ -74,7 +74,6 @@ async def request_handler(c,m: Message):
             ],
 
         ])
-    )
 
         return await m.reply_text(f"Your group may not have access to add your own DB Channel or may have expired. Please request access to the admin" ,reply_markup=REPLY_MARKUP ,disable_web_page_preview=True)
 
