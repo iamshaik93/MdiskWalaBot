@@ -69,12 +69,12 @@ async def request_handler(c,m: Message):
 
     if not group_info["has_access"] or not await db.is_group_verified(group_id):
         REPLY_MARKUP = InlineKeyboardMarkup([
-                            [
+            [
                 InlineKeyboardButton('Request Access', callback_data=f'request_access#{m.chat.id}#{m.from_user.id}'),
             ],
 
         ])
-
+    )
 
         return await m.reply_text(f"Your group may not have access to add your own DB Channel or may have expired. Please request access to the admin" ,reply_markup=REPLY_MARKUP ,disable_web_page_preview=True)
 
