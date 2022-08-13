@@ -17,7 +17,7 @@ async def help_handler(_, event: Message):
              InlineKeyboardButton("Help", url=f'https://t.me/{Config.HELP_TEXT}')
              ]
         ])
-    ))                         
+    )                        
 
 @Client.on_message(filters.command("total_users") & filters.private &  filters.chat(Config.BOT_OWNER))
 async def total_users(_, event: Message):
