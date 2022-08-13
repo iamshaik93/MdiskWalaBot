@@ -88,6 +88,12 @@
             "required": false,
             "value": "False"
         },
+        "HELP_TEXT": {
+            "description": "Type Anything You Want"    
+        },
+        "ABOUT_TEXT": {
+            "description": "Type Anything You Want"
+        },    
         "MDISK_API":{
             "description": "Mdisk API",
             "required": true,
