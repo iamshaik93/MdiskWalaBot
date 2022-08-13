@@ -37,9 +37,6 @@
         "BOT_OWNER": {
             "description": "Bot Owner UserID"
         },
-        "OWNER_USERNAME": {
-            "description": "Bot Owner User Name Without @"
-        },
         "BACKUP_CHANNEL": {
             "description": "Bot Backup Channel Without @"
         },
@@ -51,9 +48,6 @@
         },
         "START_PHOTO": {
             "description": "Add Your Photo Link"
-        },
-        "GROUP_USERNAME": {
-            "description": "Type Anything You Want"
         },
         "DATABASE_URL": {
             "description": "MongoDB Database URI for Saving UserID for Broadcast."
