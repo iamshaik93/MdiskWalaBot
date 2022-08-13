@@ -7,7 +7,7 @@ from TeamTeleRoid.database import db
 
 @Client.on_message(filters.command("help") & filters.private)
 async def help_handler(_, event: Message):
-    await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
+    await event.reply_text(Config.ABOUT_HELP_TEXT),
         reply_markup=InlineKeyboardMarkup([
              [
             InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{Config.BOT_USERNAME}?startgroup=true')
