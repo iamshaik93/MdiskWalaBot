@@ -69,8 +69,8 @@ async def request_handler(c,m: Message):
 
     if not group_info["has_access"] or not await db.is_group_verified(group_id):
         REPLY_MARKUP = InlineKeyboardMarkup([
-            [
-                InlineKeyboardButton('Request Access', callback_data=f'request_access#{m.chat.id}#{m.from_user.id}')
+                            [
+                InlineKeyboardButton('Request Access', callback_data=f'request_access#{m.chat.id}#{m.from_user.id}'),
             ],
 
         ])
