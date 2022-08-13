@@ -13,8 +13,8 @@ async def help_handler(_, event: Message):
             InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{Config.BOT_USERNAME}?startgroup=true')
             ],
 
-             [InlineKeyboardButton("About", url=f'https://t.me/{Config.ABOUT_BOT_TEXT}'),
-             InlineKeyboardButton("Help", url=f'https://t.me/{Config.ABOUT_HELP_TEXT}')
+             [InlineKeyboardButton("About", callback_data="About_msg"),
+             InlineKeyboardButton("Help", callback_data="Help_msg")
              ]
         ])
     )                        
