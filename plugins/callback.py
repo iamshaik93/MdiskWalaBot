@@ -100,8 +100,8 @@ async def button(bot, cmd: CallbackQuery):
             InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{Config.BOT_USERNAME}?startgroup=true')
             ],
                     [
-                        InlineKeyboardButton("About", callback_data="About_msg"),
-                        InlineKeyboardButton("Home", callback_data="gohome")
+                        InlineKeyboardButton("About", url=f'https://t.me/{Config.ABOUT_TEXT}'),
+                        InlineKeyboardButton("Help", url=f'https://t.me/{Config.HELP_TEXT}')
                     ]
                 ]
             ),
@@ -117,7 +117,7 @@ async def button(bot, cmd: CallbackQuery):
             InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{Config.BOT_USERNAME}?startgroup=true')
             ], 
                                         [
-                        InlineKeyboardButton("About", callback_data="About_msg"),
+                        InlineKeyboardButton("About", url=f'https://t.me/{Config.ABOUT_TEXT}'),
                         InlineKeyboardButton("Home", callback_data="gohome")
                     ]
                 ]
@@ -134,8 +134,8 @@ async def button(bot, cmd: CallbackQuery):
             InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{Config.BOT_USERNAME}?startgroup=true')
             ],
                     [
-                        InlineKeyboardButton("About", callback_data="About_msg"),
-                        InlineKeyboardButton("Help", callback_data="Help_msg")
+                        InlineKeyboardButton("About", url=f'https://t.me/{Config.ABOUT_TEXT}'),
+                        InlineKeyboardButton("Help", url=f'https://t.me/{Config.HELP_TEXT}')
                     ]
                 ]
             ),
