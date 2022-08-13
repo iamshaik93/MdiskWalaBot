@@ -9,9 +9,10 @@ from TeamTeleRoid.database import db
 async def help_handler(_, event: Message):
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton('Our Channel', url=f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}'),
-             InlineKeyboardButton('Our Group', url=f'https://t.me/{Config.GROUP_USERNAME}'),
-             InlineKeyboardButton("About", callback_data="About_msg")]
+             [
+            InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{Config.BOT_USERNAME}?startgroup=true')
+            ]
+             [InlineKeyboardButton("About", callback_data="About_msg")]
         ])
     )
 
