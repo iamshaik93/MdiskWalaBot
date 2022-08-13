@@ -1,7 +1,6 @@
 # (c) @RoyalKrrishna
 
 from os import link
-from telethon import Button
 from configs import Config
 from pyrogram import Client, idle
 import asyncio
