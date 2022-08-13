@@ -100,7 +100,7 @@ async def button(bot, cmd: CallbackQuery):
             InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{Config.BOT_USERNAME}?startgroup=true')
             ],
                     [
-                        InlineKeyboardButton("About", callback_data="About_msg"),
+                        InlineKeyboardButton("Home", callback_data="gohome"),
                         InlineKeyboardButton("Help", callback_data="Help_msg")
                     ]
                 ]
