@@ -93,9 +93,8 @@ async def message_handler(event):
         async for msg_list in AsyncIter(search):
             async for msg in msg_list:
                 c += 1
+                print(msg.text)
                 f_text = msg.text.replace("*", "")
-
-
 
                 f_text = await link_to_hyperlink(f_text)
                 answer += f'\n\n\n✅ PAGE {c}:\n\n━━━━━━━━━\n\n' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[
