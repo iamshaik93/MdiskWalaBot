@@ -13,7 +13,7 @@ from telethon import TelegramClient, events
 import urllib.parse
 from telethon.errors import UserNotParticipantError
 from telethon.tl.functions.channels import GetParticipantRequest
-
+import re
 tbot = TelegramClient('mdisktelethonbot', Config.API_ID, Config.API_HASH).start(bot_token=Config.BOT_TOKEN)
 client = TelegramClient(StringSession( Config.USER_SESSION_STRING), Config.API_ID, Config.API_HASH)
 
@@ -93,8 +93,7 @@ async def message_handler(event):
         async for msg_list in AsyncIter(search):
             async for msg in msg_list:
                 c += 1
-                print(msg.text)
-                f_text = msg.text.replace("*", "")
+                f_text = re.sub("__|\*", "", msg.text)
 
                 f_text = await link_to_hyperlink(f_text)
                 answer += f'\n\n\n✅ PAGE {c}:\n\n━━━━━━━━━\n\n' + '' + f_text.split("\n", 1)[0] + '' + '\n\n' + '' + f_text.split("\n", 2)[
