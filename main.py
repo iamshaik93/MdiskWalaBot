@@ -33,41 +33,41 @@ async def get_user_join(id):
 
 @tbot.on(events.NewMessage(incoming=True))
 async def message_handler(event):
-    
-    if event.message.post:
-        return
-
-    # if event.is_channel:return
-    if event.text.startswith("/"):return
-
-    print("\n")
-    print("Message Received: " + event.text)
-
-    # Force Subscription
-    if  not await get_user_join(event.sender_id):
-        haha = await event.reply(f'''**Hey! {event.sender.first_name} 😃**
-
-**You Have To Join Our Update Channel To Use Me ✅**
-
-**Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}'))
-        await asyncio.sleep(Config.AUTO_DELETE_TIME)
-        return await haha.delete()
-
-    
-    print("Group: " + str(event.is_group))
-    print("Channel: " + str(event.is_channel))
-    args = event.text
-    args = await validate_q(args)
-
-    print("Search Query: {args}".format(args=args))
-    print("\n")
-    
-    if not args:
-        return
-
-    txt = await event.reply('**Searching For "{}" 🔍**'.format(event.text))
-
     try:
+        if event.message.post:
+            return
+
+        # if event.is_channel:return
+        if event.text.startswith("/"):return
+
+        print("\n")
+        print("Message Received: " + event.text)
+
+        # Force Subscription
+        if  not await get_user_join(event.sender_id):
+            haha = await event.reply(f'''**Hey! {event.sender.first_name} 😃**
+
+    **You Have To Join Our Update Channel To Use Me ✅**
+
+    **Click Bellow Button To Join Now.👇🏻**''', buttons=Button.url('🍿Updates Channel🍿', f'https://t.me/{Config.UPDATES_CHANNEL_USERNAME}'))
+            await asyncio.sleep(Config.AUTO_DELETE_TIME)
+            return await haha.delete()
+
+
+        print("Group: " + str(event.is_group))
+        print("Channel: " + str(event.is_channel))
+        args = event.text
+        args = await validate_q(args)
+
+        print("Search Query: {args}".format(args=args))
+        print("\n")
+
+        if not args:
+            return
+
+        txt = await event.reply('**Searching For "{}" 🔍**'.format(event.text))
+
+
 
         search = []
         if event.is_group or event.is_channel:
