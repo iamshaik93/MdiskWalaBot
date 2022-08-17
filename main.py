@@ -53,9 +53,6 @@ async def message_handler(event):
             await asyncio.sleep(Config.AUTO_DELETE_TIME)
             return await haha.delete()
 
-
-        print("Group: " + str(event.is_group))
-        print("Channel: " + str(event.is_channel))
         args = event.text
         args = await validate_q(args)
 
@@ -80,8 +77,9 @@ async def message_handler(event):
         else:
             CHANNEL_ID = Config.CHANNEL_ID
 
-        print(CHANNEL_ID)
+
         async for i in AsyncIter(args.split()):
+            print(i)
             search_msg = client.iter_messages(CHANNEL_ID, limit=5, search=i)
             search.append(search_msg)
 
