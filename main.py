@@ -78,10 +78,11 @@ async def message_handler(event):
             CHANNEL_ID = Config.CHANNEL_ID
 
 
-        async for i in AsyncIter(args.split()):
-            print(i)
-            search_msg = client.iter_messages(CHANNEL_ID, limit=5, search=i)
-            search.append(search_msg)
+        async for i in AsyncIter(re.sub("__|\*", "", args).split()):
+            if i > 2:
+               
+                search_msg = client.iter_messages(CHANNEL_ID, limit=5, search=i)
+                search.append(search_msg)
 
         username = Config.UPDATES_CHANNEL_USERNAME
         answer = f'**Join** [@{username}](https://telegram.me/{username}) \n\n'
