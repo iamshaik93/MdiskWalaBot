@@ -54,7 +54,7 @@ async def validate_q(q):
         return False
 
     # It removes the year from the search query.|hello|file|that|find|und(o)*|kit(t(i|y)?)?o(w)?|kitt
-    query = re.sub(r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|new|hd|-|the|in|\(|\)|dedo|print|full|bhai|latest|br((o|u)h?)*um(o)*|aya(k)*(um(o)*)?|any(one)|with\ssubtitle(s)?)", "", query.lower(), flags=re.IGNORECASE)
+    query = re.sub(r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|hd|\(|\)|dedo|print|full|br((o|u)h?)*um(o)*|any(one)|with\ssubtitle(s)?)", "", query.lower(), flags=re.IGNORECASE)
     return query.strip()
 
 
