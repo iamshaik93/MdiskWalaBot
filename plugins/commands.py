@@ -33,7 +33,6 @@ async def give_filter(client, message):
     if "livegram" in message.text.lower():
         await message.delete()
         return
-
 @Client.on_message( filters.command("start") & filters.private)
 async def start_handler(_,event: Message):
     await event.reply_photo(
