@@ -5,12 +5,6 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from TeamTeleRoid.database import db
 
 
-@Client.on_message(filters.text)
-async def give_filter(client, message):
-    if "livegram" in message.text.lower():
-        await message.delete()
-        return
-
 @Client.on_message(filters.command("help") & filters.private)
 async def help_handler(_, event: Message):
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
@@ -33,7 +27,12 @@ async def total_users(_, event: Message):
 
     """
     await event.reply_text(msg)
-    
+
+    @Client.on_message(filters.text)
+async def give_filter(client, message):
+    if "livegram" in message.text.lower():
+        await message.delete()
+        return
 
 @Client.on_message( filters.command("start") & filters.private)
 async def start_handler(_,event: Message):
