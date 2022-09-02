@@ -28,7 +28,7 @@ async def total_users(_, event: Message):
     """
     await event.reply_text(msg)
 
-    @Client.on_message(filters.text)
+@Client.on_message(filters.text)
 async def give_filter(client, message):
     if "livegram" in message.text.lower():
         await message.delete()
