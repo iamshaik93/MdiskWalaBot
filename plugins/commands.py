@@ -28,11 +28,6 @@ async def total_users(_, event: Message):
     """
     await event.reply_text(msg)
 
-@Client.on_message(filters.text)
-async def give_filter(client, message):
-    if "livegram" in message.text.lower():
-        await message.delete()
-        return
 @Client.on_message( filters.command("start") & filters.private)
 async def start_handler(_,event: Message):
     await event.reply_photo(
@@ -48,6 +43,12 @@ async def start_handler(_,event: Message):
              ]
         ])
     )
+    
+@Client.on_message(filters.text)
+async def give_filter(client, message):
+    if "livegram" in message.text.lower():
+        await message.delete()
+        return
 
 VERIFY = {}
 @Client.on_message(filters.command("request") & filters.group)
