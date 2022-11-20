@@ -14,9 +14,9 @@ COPY requirements.txt /requirements.txt
 # Installing Requirements
 RUN cd /
 RUN pip3 install -U -r requirements.txt
-RUN mkdir /MessageSearchBot
-WORKDIR /MessageSearchBot
+RUN mkdir /MdiskWalaBot
+WORKDIR /MdiskWalaBot
 COPY start.sh /start.sh
 
-# Running MessageSearchBot
+# Running MdiskWalaBot
 CMD ["/bin/bash", "/start.sh"]
